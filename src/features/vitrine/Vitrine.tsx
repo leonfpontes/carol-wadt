@@ -23,7 +23,7 @@ interface CartaoDePagina {
 const PAGINAS: CartaoDePagina[] = [
   {
     titulo: "Site principal",
-    descricao: "carolinawadt.com: a página oficial da Mentoria De Guerreira a Mulher Inteira, com preço cheio. A proposta mantém a identidade azul e dourada do site.",
+    descricao: "carolinawadt.com: a página oficial da Mentoria da Mulher Inteira, com preço cheio. A proposta mantém a identidade azul e dourada do site.",
     atual: ROTAS.atual.site,
     proposta: ROTAS.proposta.site,
     imagem: IMAGENS.original.carolina,
@@ -41,7 +41,7 @@ const PAGINAS: CartaoDePagina[] = [
 
 const MELHORIAS = [
   "Site oficial e Black continuam distintos, cada um com a sua identidade.",
-  "Slogan \"De Guerreira a Mulher Inteira\" em destaque, com a foto da Carol na capa.",
+  "Nome da mentoria em destaque, com a foto da Carol na capa.",
   "Dores, para quem é e para quem não é com fotos e ícones em que a visitante se reconhece.",
   "Como funciona em trilha, da mulher que chega à mulher inteira.",
   "Botão \"Garantir minha vaga\" no lugar de \"Quero entrar na Mulher Inteira\".",

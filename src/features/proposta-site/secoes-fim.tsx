@@ -65,8 +65,8 @@ export function InscricaoDoSite({ conteudo, botao }: Fatia<"inscricao">) {
         <Surgir className="lg:sticky lg:top-20">
           <div className="relative overflow-hidden rounded-3xl bg-legado-marinho p-7 text-center text-legado-gelo shadow-2xl shadow-legado-marinho/30 ring-1 ring-legado-ouro/40 sm:p-9">
             <div className="absolute -top-24 left-1/2 h-48 w-72 -translate-x-1/2 rounded-full bg-legado-ouro/15 blur-3xl" aria-hidden="true" />
-            <p className="relative mb-1 text-sm tracking-[0.2em] text-legado-gelo/70 uppercase">Mentoria</p>
-            <p className="relative mb-6 font-serif text-2xl text-legado-ouro md:text-3xl">De Guerreira a Mulher Inteira</p>
+            <p className="relative mb-1 text-sm tracking-[0.2em] text-legado-gelo/70 uppercase">Mentoria da</p>
+            <p className="relative mb-6 font-serif text-2xl text-legado-ouro md:text-3xl">Mulher Inteira</p>
             <ul className="relative mb-6 grid list-none gap-2 p-0 text-left text-sm text-legado-gelo/85">
               {conteudo.inclui.map((item) => (
                 <li key={item.titulo} className="flex items-center gap-2">
@@ -171,7 +171,6 @@ export function RodapeDoSite({ conteudo }: Fatia<"rodape">) {
         <NotaDeMelhoria className="mx-auto">{conteudo.nota}</NotaDeMelhoria>
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <p className="mb-1 text-xs tracking-[0.3em] text-legado-ouro uppercase">Mentoria</p>
             <p className="mb-4 font-serif text-2xl text-legado-gelo">{conteudo.marca}</p>
             <p className="max-w-xs text-sm leading-relaxed text-legado-gelo/60">{conteudo.descricao}</p>
           </div>

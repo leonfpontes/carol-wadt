@@ -15,9 +15,9 @@ O site oficial e a Black são produtos distintos. A proposta do site **não** us
 - **Regra tipográfica:** todos os títulos de seção na mesma fonte e no mesmo estilo (Playfair, sem itálico). Destaque só por cor.
 - Não inventar avaliação numérica ("5,0"): as estrelas são decorativas e o texto diz que são palavras de alunas.
 
-## 2026-10-24 · "De Guerreira a Mulher Inteira" é o slogan da Carol
+## 2026-10-24 · Sai o "Guerreira": "Mentoria da Mulher Inteira"
 
-O slogan fica na capa da proposta do site, no cartão de preço e no rodapé. Não trocar.
+Num primeiro momento mantivemos "De Guerreira a Mulher Inteira" como slogan. Depois, seguindo um áudio da Carol, o Leonardo decidiu tirar o "Guerreira": o nome passa a ser **Mentoria da Mulher Inteira** na capa, no cartão de preço e no rodapé da proposta do site. A réplica do site atual mantém o texto original. Um teste garante que "Guerreira" não volta às propostas. Estrutura, cartões e metodologia ficam como estão até a reunião com a Carol.
 
 ## 2026-10-24 · Só o botão muda de vocabulário
 

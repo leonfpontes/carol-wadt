@@ -35,7 +35,7 @@ docker compose up -d --build  # versão de produção (nginx) em http://localhos
 1. **Botão principal das propostas: "Garantir minha vaga".** Nunca use "Quero entrar na Mulher Inteira" ou "Quero entrar" nas propostas (duplo sentido sexual ao lado da foto da Carol). O teste de conteúdo barra.
 2. **Os demais termos da Carol ficam como ela escreveu.** Não "corrija" "gostosos", "entrega", "se permitir receber", "Hotseat" etc. (decisão registrada em docs/decisoes.md).
 3. **Prosperidade financeira é um dos três pilares.** Nunca remova; nunca prometa valores.
-3a. **"De Guerreira a Mulher Inteira" é o slogan da Carol.** Mantenha na proposta do site.
+3a. **O nome é "Mentoria da Mulher Inteira".** "De Guerreira a Mulher Inteira" saiu por decisão da Carol; não volte com "Guerreira" nas propostas (a réplica do site atual mantém o texto original).
 3b. **Site e Black não se misturam.** A proposta do site usa só a identidade do site (`legado-*`, `features/proposta-site/base.tsx`); a da Black, só a editorial.
 3c. **Títulos de seção:** mesma fonte e mesmo estilo (Playfair, sem itálico). Destaque só por cor.
 3d. **Nada de avaliação inventada** (notas, médias, número de alunas) sem dado real da Carol.

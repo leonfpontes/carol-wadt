@@ -35,8 +35,13 @@ describe.each(Object.entries(PROPOSTAS))("proposta %s", (_, conteudo) => {
 })
 
 describe("proposta do site oficial", () => {
-  it("mantém o slogan da Carol no topo", () => {
-    expect(PROPOSTA_SITE.capa.produto.join(" ")).toBe("De Guerreira a Mulher Inteira")
+  it("usa o nome \"Mentoria da Mulher Inteira\" no topo", () => {
+    expect(PROPOSTA_SITE.capa.produto.join(" ")).toBe("Mentoria da Mulher Inteira")
+  })
+
+  it("não usa mais \"Guerreira\" (decisão da Carol)", () => {
+    expect(textoVisivel(PROPOSTA_SITE)).not.toMatch(/guerreira/i)
+    expect(textoVisivel(PROPOSTA_BLACK)).not.toMatch(/guerreira/i)
   })
 
   it("mantém a prosperidade financeira como pilar", () => {

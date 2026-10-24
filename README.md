@@ -2,7 +2,7 @@
 
 # Mulher Inteira
 
-**O novo site da Mentoria De Guerreira a Mulher Inteira, de Carolina Wadt.**
+**O novo site da Mentoria da Mulher Inteira, de Carolina Wadt.**
 Páginas de vendas que falam com a mulher bem resolvida, convertem no celular e começam, enfim, a construir uma lista de e-mails própria.
 
 React 19 · Tailwind CSS 4 · shadcn/ui · TypeScript · Vite
@@ -26,7 +26,7 @@ Na proposta, notas amarelas explicam **por que** cada coisa mudou. Um botão as 
 
 São **dois produtos distintos**, e cada proposta respeita o seu:
 
-- **Site oficial** (carolinawadt.com): página de vendas com preço cheio. A proposta **mantém a identidade dele** (azul-marinho, dourado e turquesa, Playfair e Inter, as pinturas dos pilares e dos resultados e o slogan "De Guerreira a Mulher Inteira") e melhora a apresentação seção por seção.
+- **Site oficial** (carolinawadt.com): página de vendas com preço cheio. A proposta **mantém a identidade dele** (azul-marinho, dourado e turquesa, Playfair e Inter, as pinturas dos pilares e dos resultados) e melhora a apresentação seção por seção.
 - **Página Black** ("Black Outubro"): promoção de Black Friday, com preço menor, prazo e checkout próprio. Tem identidade própria, editorial em preto e dourado.
 
 ## O que a proposta resolve

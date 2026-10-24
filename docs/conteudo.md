@@ -42,7 +42,7 @@ A página Black é uma **promoção de Black Friday**: preço menor de propósit
 
 ## Regras de texto
 
-0. **"De Guerreira a Mulher Inteira" é o slogan da Carol.** Fica na capa, no cartão de preço e no rodapé da proposta do site.
+0. **O nome é "Mentoria da Mulher Inteira".** "De Guerreira a Mulher Inteira" saiu por decisão da Carol. A palavra "Guerreira" não aparece nas propostas; só na réplica do site atual.
 1. **Prosperidade financeira é um dos três pilares.** Não remover nem esconder. Nunca prometer valores.
 2. **Botão principal: "Garantir minha vaga"** (na barra do celular, "Garantir vaga"). "Quero entrar na Mulher Inteira" e "Quero entrar" ficam proibidos nas propostas por terem duplo sentido sexual ao lado da foto da Carol.
 3. **Os demais termos da Carol ficam como ela escreveu** ("gostosos", "entrega", "se permitir receber", "Hotseat"...). Decisão do Leonardo: fazem parte do apelo sentimental. Estão listados em `RevisorDeTermos` com severidade `atencao`, só para consulta.

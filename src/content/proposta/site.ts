@@ -52,9 +52,9 @@ export const PROPOSTA_SITE: ConteudoDoSiteProposto = {
   botaoPrincipal: BOTAO_PRINCIPAL,
 
   capa: {
-    nota: "O slogan \"De Guerreira a Mulher Inteira\" continua no topo, agora em letras grandes, ao lado da foto da Carol (como na Black), e o produto aparece logo acima. No lugar de \"Compra Segura\", \"Satisfação Garantida\" e \"Privacidade Protegida\", entram os benefícios da mentoria. Os selos de segurança descem para junto do preço.",
-    rotulo: "Mentoria em grupo · Inteligência Sistêmica",
-    produto: ["De Guerreira a", "Mulher Inteira"],
+    nota: "O nome da mentoria aparece de cara, em letras grandes, ao lado da foto da Carol (como na Black). Sai o \"De Guerreira a\": o nome passa a ser Mentoria da Mulher Inteira. No lugar de \"Compra Segura\", \"Satisfação Garantida\" e \"Privacidade Protegida\", entram os benefícios da mentoria. Os selos de segurança descem para junto do preço.",
+    rotulo: "Mentoria em grupo de Inteligência Sistêmica",
+    produto: ["Mentoria da", "Mulher Inteira"],
     promessa: "A vida que você construiu está pronta. Agora falta você estar inteira nela.",
     apoio:
       "Seis encontros ao vivo com Carolina Wadt para destravar a prosperidade em três frentes: em você, nos seus relacionamentos e no seu dinheiro.",
@@ -356,7 +356,7 @@ export const PROPOSTA_SITE: ConteudoDoSiteProposto = {
 
   rodape: {
     nota: "Rodapé completo: navegação, contatos, documentos legais e selos de confiança, com os dados que dependem da Carol marcados.",
-    marca: "De Guerreira a Mulher Inteira",
+    marca: "Mentoria da Mulher Inteira",
     descricao: "Mentoria em grupo de Inteligência Sistêmica para mulheres que querem viver por inteiro a vida que construíram.",
     colunas: [
       {
