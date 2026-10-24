@@ -1,0 +1,208 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/*
+ * Design tokens do projeto.
+ *
+ * Há duas famílias de cor, de propósito:
+ *  - "legado-*": a paleta do site atual (azul-marinho + dourado), usada só
+ *    nas réplicas fiéis, para que a comparação antes/depois seja honesta.
+ *  - as demais (preto, tinta, off, ouro…): a identidade editorial proposta,
+ *    preto e branco com um único acento dourado, usada na página Black e em
+ *    todas as melhorias.
+ * Nenhum componente deve usar hex solto: crie ou reutilize um token aqui.
+ */
+@theme {
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-inter: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Identidade editorial (proposta e página Black) */
+  --color-preto: #0b0b0b;
+  --color-tinta: #141414;
+  --color-carvao: #151515;
+  --color-off: #f4f3f0;
+  --color-ouro: #c9a24b;
+  --color-ouro-suave: #e9d8a6;
+  --color-ouro-escuro: #8c6a1e;
+  --color-cinza: #8a877f;
+  --color-linha-escura: #2a2926;
+  --color-linha-clara: #dedcd7;
+  --color-texto-claro: #3a3936;
+  --color-nota: #fff7dd;
+  --color-nota-borda: #e8d190;
+  --color-nota-tinta: #5a4410;
+  --color-sucesso: #3d5a2a;
+
+  /* Paleta do site atual (somente réplicas) */
+  --color-legado-marinho: #0d1b2a;
+  --color-legado-marinho-claro: #1a2f45;
+  --color-legado-azul: #1e3a5f;
+  --color-legado-azul-medio: #2b5f8a;
+  --color-legado-petroleo: #2e5a6b;
+  --color-legado-ciano: #4a90a4;
+  --color-legado-ciano-claro: #4a90b8;
+  --color-legado-turquesa: #3a8da8;
+  --color-legado-celeste: #5bc0de;
+  --color-legado-verde-agua: #2e8b8b;
+  --color-legado-profundo: #1a5a6e;
+  --color-legado-ardosia: #1a3a52;
+  --color-legado-ouro: #d4af37;
+  --color-legado-ouro-escuro: #b8963b;
+  --color-legado-ouro-claro: #f5d76e;
+  --color-legado-ouro-moldura: #c5a028;
+  --color-legado-areia: #c9a86c;
+  --color-legado-creme: #f8f7f4;
+  --color-legado-marfim: #fefdfb;
+  --color-legado-gelo: #f5f5f2;
+  --color-legado-grafite: #2a2a2a;
+  --color-legado-alerta: #e55c5c;
+  --color-legado-texto-cartao: #4a4a4a;
+  --color-legado-cartao-escuro: #121212;
+  --color-legado-linha: #262626;
+
+  --animate-surgir: surgir 0.7s ease-out both;
+
+  @keyframes surgir {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+/* Mapeia os tokens do shadcn/ui para a identidade editorial. */
+@theme inline {
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+:root {
+  --background: #0b0b0b;
+  --foreground: #ffffff;
+  --card: #ffffff;
+  --card-foreground: #0b0b0b;
+  --popover: #ffffff;
+  --popover-foreground: #0b0b0b;
+  --primary: #c9a24b;
+  --primary-foreground: #0b0b0b;
+  --secondary: #f4f3f0;
+  --secondary-foreground: #0b0b0b;
+  --muted: #f4f3f0;
+  --muted-foreground: #3a3936;
+  --accent: #e9d8a6;
+  --accent-foreground: #0b0b0b;
+  --destructive: #b3261e;
+  --border: #dedcd7;
+  --input: #dedcd7;
+  --ring: #c9a24b;
+  --radius: 0.25rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-preto font-sans text-white antialiased;
+    font-size: 17px;
+    line-height: 1.65;
+    overflow-x: clip;
+  }
+  img {
+    max-width: 100%;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ---------- Utilitários recorrentes ---------- */
+
+/* Contêiner editorial: 1040px e respeito à área segura do iPhone. */
+@utility contem {
+  width: 100%;
+  max-width: 1040px;
+  margin-inline: auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+
+/* Contêiner do site atual, igual ao "container mx-auto px-6 lg:px-12" do original. */
+@utility contem-legado {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  @media (width >= 40rem) { max-width: 40rem; }
+  @media (width >= 48rem) { max-width: 48rem; }
+  @media (width >= 64rem) { max-width: 64rem; padding-inline: 3rem; }
+  @media (width >= 80rem) { max-width: 80rem; }
+  @media (width >= 96rem) { max-width: 96rem; }
+}
+
+/* Título editorial: Playfair, peso leve, quebra equilibrada. */
+@utility titulo {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+/* Losango dourado usado como marcador (kicker, listas). */
+@utility losango {
+  width: 9px;
+  height: 9px;
+  background: var(--color-ouro);
+  transform: rotate(45deg);
+  flex: none;
+}
+
+/* Foto em preto e branco com vinheta em elipse, como na capa da Black. */
+@utility vinheta {
+  filter: grayscale(1) contrast(1.06);
+  -webkit-mask-image: radial-gradient(ellipse 52% 52% at 50% 46%, #000 52%, transparent 100%);
+  mask-image: radial-gradient(ellipse 52% 52% at 50% 46%, #000 52%, transparent 100%);
+}
+
+/* Barra fixa no rodapé do celular: soma a área segura do iPhone. */
+@utility base-segura {
+  padding-top: 10px;
+  padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}

@@ -1,0 +1,440 @@
+<title>Mulher Inteira Black</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Manrope:wght@400;500;700;800&display=swap">
+<style>
+:root {
+  /* Editorial preto e branco, um único acento dourado. Seções alternam escuro e claro como páginas de revista. */
+  --black: #0B0B0B;
+  --ink: #141414;
+  --white: #FFFFFF;
+  --off: #F4F3F0;
+  --gold: #C9A24B;
+  --gold-soft: #E9D8A6;
+  --grey: #8A877F;
+  --line-dark: #2A2926;
+  --line-light: #DEDCD7;
+  --text-light: #3A3936;
+  --note-bg: #FFF7DD;
+  --note-ink: #5A4410;
+  --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--black); color: var(--white); font-family: var(--sans); font-size: 17px; line-height: 1.65; }
+img { max-width: 100%; }
+a { color: inherit; }
+.wrap { max-width: 1040px; margin: 0 auto; padding-block: 88px; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.narrow { max-width: 720px; }
+.sec-dark { background: var(--black); color: var(--white); }
+.sec-ink { background: var(--ink); color: var(--white); }
+.sec-light { background: var(--white); color: var(--black); }
+.sec-off { background: var(--off); color: var(--black); }
+
+.proposal-bar { background: var(--gold); color: var(--black); font-size: 13px; font-weight: 700; text-align: center; padding-block: 10px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.proposal-bar span { font-weight: 500; }
+
+.kicker { display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 800; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin: 0 0 18px; }
+.kicker::before { content: ""; width: 9px; height: 9px; background: var(--gold); transform: rotate(45deg); flex: none; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.12; text-wrap: balance; margin: 0 0 18px; }
+h2 { font-size: clamp(1.9rem, 4.6vw, 2.9rem); }
+h3 { font-size: 1.4rem; }
+p { margin: 0 0 16px; }
+.lead { font-size: 1.18rem; max-width: 60ch; }
+.muted { opacity: 0.75; }
+em.g { font-style: italic; color: var(--gold-soft); }
+.sec-light em.g, .sec-off em.g { color: #8C6A1E; }
+
+/* HERO */
+.hero { position: relative; overflow: hidden; background: var(--black); }
+.hero-grid { max-width: 1040px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 24px; align-items: center; padding-block: 56px 72px; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.hero-copy { min-width: 0; position: relative; z-index: 1; }
+.brand { font-family: var(--serif); text-transform: uppercase; letter-spacing: 0.04em; font-size: clamp(2.6rem, 6.4vw, 4.9rem); line-height: 0.95; margin: 0 0 30px; }
+.brand span { display: block; }
+.hero h1 { font-size: clamp(1.35rem, 2.6vw, 1.85rem); line-height: 1.3; max-width: 26ch; margin-bottom: 16px; }
+.hero .sub { color: #CFCFCF; font-size: 16px; max-width: 46ch; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: #BDBDBD; margin-top: 18px; }
+.hero-meta b { color: var(--gold-soft); font-weight: 700; }
+.badge { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--gold); color: var(--gold-soft); border-radius: 999px; padding: 6px 14px; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 22px; }
+.hero-photo { min-width: 0; }
+.hero-photo img { display: block; width: 100%; max-width: 460px; margin-left: auto; filter: grayscale(1) contrast(1.06);
+  -webkit-mask-image: radial-gradient(ellipse 52% 52% at 50% 46%, #000 52%, transparent 100%);
+  mask-image: radial-gradient(ellipse 52% 52% at 50% 46%, #000 52%, transparent 100%); }
+@media (max-width: 780px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr); padding-block: 40px 56px; }
+  .hero-photo img { max-width: 230px; margin: 0 auto; }
+}
+
+/* BOTÕES */
+.btn { display: inline-block; background: var(--gold); color: var(--black); padding: 16px 30px; border-radius: 999px; text-decoration: none; font-weight: 800; font-size: 15px; letter-spacing: 0.02em; border: 0; cursor: pointer; font-family: var(--sans); }
+.btn:hover { background: var(--gold-soft); }
+.btn:focus-visible, .ghost:focus-visible, .toggle:focus-visible { outline: 3px solid var(--gold-soft); outline-offset: 3px; }
+.sec-light .btn, .sec-off .btn { background: var(--black); color: var(--white); }
+.sec-light .btn:hover, .sec-off .btn:hover { background: #2A2926; }
+.cta-row { margin-top: 34px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
+.cta-hint { font-size: 13px; opacity: 0.7; }
+.ghost { color: inherit; font-weight: 700; font-size: 15px; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--gold); }
+
+/* IDENTIFICAÇÃO */
+.checks { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.checks li { border: 1px solid var(--line-dark); padding: 16px 20px 16px 48px; border-radius: 4px; position: relative; min-width: 0; }
+.checks li::before { content: ""; position: absolute; left: 20px; top: 24px; width: 12px; height: 12px; background: var(--gold); transform: rotate(45deg); }
+.punch { font-family: var(--serif); font-size: clamp(1.4rem, 3vw, 1.9rem); margin-top: 40px; max-width: 30ch; }
+@media (max-width: 720px) { .checks { grid-template-columns: minmax(0, 1fr); } }
+
+/* RESULTADOS */
+.outcomes { display: grid; gap: 0; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 36px; border-top: 1px solid var(--line-light); }
+.outcomes div { padding: 22px 24px 22px 0; border-bottom: 1px solid var(--line-light); min-width: 0; }
+.outcomes div:nth-child(odd) { border-right: 1px solid var(--line-light); }
+.outcomes div:nth-child(even) { padding-left: 24px; }
+.outcomes b { display: block; font-family: var(--serif); font-weight: 400; font-size: 1.25rem; margin-bottom: 6px; }
+.outcomes p { margin: 0; color: var(--text-light); font-size: 15px; }
+@media (max-width: 720px) { .outcomes { grid-template-columns: minmax(0, 1fr); } .outcomes div:nth-child(odd) { border-right: 0; } .outcomes div:nth-child(even) { padding-left: 0; } }
+
+/* PILARES */
+.pillars { display: grid; gap: 18px; margin-top: 36px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.pillar { background: #151515; border: 1px solid var(--line-dark); border-top: 2px solid var(--gold); padding: 26px 24px; min-width: 0; display: flex; flex-direction: column; }
+.pillar .tag { font-size: 11px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin: 0 0 10px; }
+.pillar h3 { font-size: 1.35rem; margin-bottom: 14px; }
+.pillar .q { font-family: var(--serif); font-style: italic; font-size: 1.08rem; color: var(--gold-soft); margin: 0 0 14px; }
+.pillar dl { margin: auto 0 0; font-size: 14.5px; display: grid; gap: 10px; }
+.pillar dt { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.6; }
+.pillar dd { margin: 2px 0 0; opacity: 0.88; }
+@media (max-width: 860px) { .pillars { grid-template-columns: minmax(0, 1fr); } }
+
+/* AUTORA */
+.author { display: grid; gap: 48px; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); align-items: center; }
+.author img { display: block; width: 100%; max-width: 360px; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; border-radius: 4px; }
+.facts { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 22px; }
+.facts div { min-width: 0; }
+.facts b { display: block; font-family: var(--serif); font-weight: 400; font-size: 1.9rem; line-height: 1; color: #8C6A1E; }
+.facts span { font-size: 13px; color: var(--text-light); }
+@media (max-width: 760px) { .author { grid-template-columns: minmax(0, 1fr); gap: 28px; } .author img { max-width: 280px; } }
+
+/* DEPOIMENTOS */
+.quotes { display: grid; gap: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 36px; }
+.quote { margin: 0; background: var(--white); border-left: 3px solid var(--gold); padding: 24px 26px; border-radius: 4px; min-width: 0; }
+.quote p { font-size: 15.5px; color: var(--text-light); margin: 0; }
+.quote .who { font-weight: 800; color: var(--black); margin-top: 14px; font-size: 13px; letter-spacing: 0.04em; }
+@media (max-width: 720px) { .quotes { grid-template-columns: minmax(0, 1fr); } }
+
+/* FORMATO */
+.format { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 36px; border: 1px solid var(--line-dark); }
+.format div { padding: 24px; border-right: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); min-width: 0; }
+.format div:nth-child(3n) { border-right: 0; }
+.format div:nth-last-child(-n+3) { border-bottom: 0; }
+.format b { display: block; font-family: var(--serif); font-weight: 400; font-size: 1.6rem; color: var(--gold-soft); margin-bottom: 4px; }
+.format span { font-size: 14.5px; opacity: 0.85; }
+@media (max-width: 760px) {
+  .format { grid-template-columns: minmax(0, 1fr); }
+  .format div { border-right: 0; border-bottom: 1px solid var(--line-dark); }
+  .format div:last-child { border-bottom: 0; }
+}
+.tbc { display: inline-block; border: 1px dashed var(--gold); color: var(--gold-soft); border-radius: 3px; padding: 0 6px; font-size: 0.82em; font-weight: 700; white-space: nowrap; }
+.sec-light .tbc, .sec-off .tbc { color: #8C6A1E; }
+
+/* BÔNUS */
+.experts { display: grid; gap: 16px; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 36px; }
+.expert { min-width: 0; }
+.expert img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; border-radius: 4px; margin-bottom: 14px; filter: grayscale(0.15); }
+.expert .role { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #8C6A1E; margin: 0 0 4px; }
+.expert h3 { font-size: 1.2rem; margin-bottom: 6px; }
+.expert p { font-size: 14.5px; color: var(--text-light); margin: 0; }
+.extras { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
+.extras div { border: 1px solid var(--line-light); padding: 20px 22px; border-radius: 4px; min-width: 0; background: var(--white); }
+.extras b { display: block; margin-bottom: 4px; }
+.extras p { margin: 0; font-size: 15px; color: var(--text-light); }
+@media (max-width: 860px) { .experts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .extras { grid-template-columns: minmax(0, 1fr); } .expert h3 { font-size: 1.05rem; } .expert p { font-size: 13.5px; } }
+
+/* OFERTA */
+.offer { max-width: 640px; margin: 0 auto; background: var(--black); color: var(--white); border: 1px solid var(--line-dark); border-top: 3px solid var(--gold); padding: 44px clamp(20px, 5vw, 44px); border-radius: 6px; }
+.offer h2 { text-align: center; }
+.stack { list-style: none; padding: 0; margin: 26px 0 0; border-top: 1px solid rgba(255,255,255,0.16); }
+.stack li { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.16); font-size: 15px; }
+.stack li span { min-width: 0; }
+.stack li em { font-style: normal; font-weight: 800; color: var(--gold-soft); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.stack li.bonus-few { opacity: 0.8; }
+.price-box { text-align: center; margin-top: 28px; }
+.old { opacity: 0.6; text-decoration: line-through; margin: 0; }
+.price { font-family: var(--serif); font-size: clamp(3rem, 10vw, 4.4rem); line-height: 1.05; margin: 6px 0 4px; color: var(--gold-soft); font-variant-numeric: tabular-nums; }
+.installments { margin: 0 0 6px; font-size: 1.02rem; }
+.fine { font-size: 13px; opacity: 0.65; margin: 0 0 22px; }
+.guarantee { display: flex; gap: 16px; align-items: flex-start; text-align: left; margin-top: 26px; padding: 18px 20px; border: 1px solid var(--line-dark); border-radius: 4px; }
+.seal { flex: none; width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid var(--gold); display: grid; place-items: center; font-family: var(--serif); font-size: 1.35rem; color: var(--gold-soft); line-height: 1; }
+.seal small { display: block; font-family: var(--sans); font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; }
+.guarantee p { margin: 0; font-size: 14.5px; opacity: 0.88; }
+.guarantee b { color: var(--gold-soft); }
+.alt-pay { margin-top: 18px; font-size: 14px; text-align: center; opacity: 0.85; }
+.deadline { text-align: center; color: var(--gold-soft); font-weight: 700; font-size: 14px; letter-spacing: 0.04em; margin: 0 0 6px; }
+
+/* FILTRO */
+.fit { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; margin-top: 30px; }
+.fit div { min-width: 0; }
+.fit h3 { font-size: 1.2rem; }
+.fit ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; color: var(--text-light); }
+@media (max-width: 720px) { .fit { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
+
+/* FAQ */
+.faq details { border-bottom: 1px solid var(--line-dark); padding: 20px 0; }
+.faq summary { cursor: pointer; font-weight: 800; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.faq summary::after { content: "+"; color: var(--gold); font-weight: 400; font-size: 1.4rem; line-height: 1; }
+.faq details[open] summary::after { content: "–"; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq p { margin: 12px 0 0; opacity: 0.82; max-width: 64ch; }
+
+/* ISCA */
+.lead-magnet { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 36px; align-items: center; }
+.lead-magnet form { display: grid; gap: 12px; min-width: 0; }
+.lead-magnet label.f { font-size: 13px; font-weight: 700; }
+.lead-magnet input[type=text], .lead-magnet input[type=email] { width: 100%; font: inherit; font-size: 16px; padding: 13px 14px; border: 1px solid var(--line-light); border-radius: 4px; background: var(--white); color: var(--black); }
+.lead-magnet input:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; }
+.consent { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--text-light); }
+.consent input { margin-top: 4px; accent-color: var(--black); }
+.form-ok { font-size: 14px; color: #3D5A2A; font-weight: 700; margin: 0; }
+@media (max-width: 760px) { .lead-magnet { grid-template-columns: minmax(0, 1fr); } }
+
+/* FECHAMENTO */
+.closing { text-align: center; }
+.closing h2 { max-width: 22ch; margin-inline: auto; }
+.closing .cta-row { justify-content: center; }
+
+footer { background: var(--black); color: var(--white); font-size: 13px; text-align: center; padding-block: 36px 96px; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); border-top: 1px solid var(--line-dark); letter-spacing: 0.04em; }
+footer p { margin: 0 0 8px; opacity: 0.7; }
+footer .note { margin-inline: auto; text-align: left; }
+footer a { color: var(--gold-soft); }
+
+/* BARRA FIXA NO CELULAR */
+.sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: rgba(11,11,11,0.96); border-top: 1px solid var(--line-dark); display: none; align-items: center; justify-content: space-between; gap: 12px; padding-top: 10px; padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px)); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.sticky .sp { font-size: 13px; line-height: 1.3; }
+.sticky .sp b { display: block; color: var(--gold-soft); font-size: 15px; }
+.sticky .btn { padding: 12px 18px; font-size: 14px; }
+@media (max-width: 760px) { .sticky.on { display: flex; } }
+
+/* NOTAS DA PROPOSTA */
+.note { display: block; background: var(--note-bg); color: var(--note-ink); border: 1px solid #E8D190; border-radius: 4px; padding: 10px 14px 10px 14px; font-size: 13.5px; line-height: 1.5; margin: 0 0 26px; max-width: 72ch; }
+.note b { font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; font-size: 11px; margin-right: 6px; }
+.notes-off .note { display: none; }
+.toggle { position: fixed; z-index: 30; right: max(16px, env(safe-area-inset-right, 0px)); top: calc(56px + env(safe-area-inset-top, 0px)); background: var(--note-bg); color: var(--note-ink); border: 1px solid #E8D190; border-radius: 999px; padding: 8px 14px; font: 700 12px var(--sans); cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.25); }
+@media (max-width: 760px) { .toggle { top: auto; bottom: calc(76px + env(safe-area-inset-bottom, 0px)); } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+<div class="proposal-bar">Proposta de melhoria da página Black Outubro · versão para avaliação. <span>As notas amarelas explicam cada mudança; os campos tracejados dependem da Carol.</span></div>
+<button class="toggle" id="toggle-notes" type="button" aria-pressed="false">Ocultar notas</button>
+<header class="hero"><div class="hero-grid">
+<div class="hero-copy">
+<aside class="note"><b>Melhoria</b>O selo "Black Outubro" deixa de ficar solto e passa a dizer até quando vale a condição.</aside>
+<div class="badge">Black Outubro · até <span class="tbc">data a confirmar</span></div>
+<aside class="note"><b>Melhoria</b>O botão "Quero entrar na Mulher Inteira" virou "Garantir minha vaga": a frase original tem duplo sentido sexual, ainda mais ao lado da foto da Carol. Outros termos ambíguos ("gostosos", "entrega", "se permitir receber", "satisfeita", "hotseat") também foram trocados.</aside>
+<p class="kicker">Mentoria em grupo · Inteligência Sistêmica</p>
+<p class="brand" aria-hidden="true"><span>Mulher</span><span>Inteira</span></p>
+<h1>A vida que você construiu está pronta. Agora falta você estar inteira nela.</h1>
+<p class="sub">Seis semanas com Carolina Wadt para mulheres que dão conta de tudo e querem voltar a sentir a própria vida: em si mesmas, nos relacionamentos e na prosperidade.</p>
+<div class="cta-row"><a class="btn" href="#oferta">Garantir minha vaga</a></div>
+<div class="hero-meta"><span><b>6 encontros</b> ao vivo e online</span><span><b>Até 2 h</b> por semana</span><span>Início: <span class="tbc">data a confirmar</span></span></div>
+</div>
+<div class="hero-photo"><img src="carolina-frente.jpg" alt="Carolina Wadt, mentora da Mulher Inteira" width="832" height="1248"></div>
+</div></header>
+<section class="sec-dark" id="para-voce"><div class="wrap">
+
+<p class="kicker">Para você</p>
+<h2>Você é a gerente geral da sua própria vida</h2>
+<ul class="checks">
+<li>Você carrega a carga mental de tudo e, mesmo assim, não se sente realmente realizada com o que faz.</li>
+<li>Você conquistou muito, mas a cada conquista já está pensando na próxima.</li>
+<li>Você cumpre as expectativas dos outros, e isso cansa mais do que parece.</li>
+<li>Sua mente não para, e você quase nunca comemora o que alcança.</li>
+<li>Você sente que falta algo, mesmo com uma vida bonita e organizada.</li>
+<li>Você percebe que repete escolhas da sua família no amor, no trabalho e com o dinheiro.</li>
+</ul>
+<p class="punch">Não falta nada na sua vida. <em class="g">Falta você dentro dela.</em></p>
+</div></section>
+<section class="sec-light" id="promessa"><div class="wrap">
+<aside class="note"><b>Melhoria</b>"Em 2 meses" vira "em seis semanas", que é a duração real. Os quatro resultados ficaram concretos e incluem a prosperidade financeira como fruto do processo, sem prometer valores.</aside>
+<p class="kicker">A promessa</p>
+<h2>Encontrar o seu lugar de potência dentro da sua própria vida</h2>
+<p class="lead">Não é sobre mudar tudo por fora. Quando a mudança acontece por dentro, o que está em volta começa a se ajustar: a rotina, os vínculos e a forma como a prosperidade chega até você.</p>
+<div class="outcomes">
+<div><b>Ver o que decide por você</b><p>Enxergar os padrões da sua história familiar que ainda escolhem no seu lugar.</p></div>
+<div><b>Devolver o que não é seu</b><p>Fazer o inventário do que você carrega e assumir só o que é seu de verdade.</p></div>
+<div><b>Relações mais leves</b><p>Se posicionar com quem você ama sem precisar dar conta de tudo sozinha.</p></div>
+<div><b>Prosperar sem guerra</b><p>Destravar a relação com dinheiro, trabalho e reconhecimento, e abrir espaço para a prosperidade.</p></div>
+</div>
+<div class="cta-row"><a class="btn" href="#oferta">Garantir minha vaga</a><span class="cta-hint">Veja valores e condições</span></div>
+</div></section>
+<section class="sec-dark" id="metodo"><div class="wrap">
+<aside class="note"><b>Melhoria</b>Juntamos os dois conjuntos de pilares num só: os nomes do site (Eu comigo, Eu e os relacionamentos, Eu e o mundo) com a pergunta, a prática e a entrega da página Black. A Carol valida a fusão.</aside>
+<p class="kicker">Como o programa funciona</p>
+<h2>Três frentes de prosperidade, uma de cada vez</h2>
+<p class="lead muted">Cada pilar tem uma pergunta, uma prática e uma entrega concreta.</p>
+<div class="pillars">
+<article class="pillar"><p class="tag">Pilar 1 · Eu comigo</p><h3>Prosperidade interna</h3><p class="q">Quanto da sua presença você perde para dar conta de tudo?</p>
+<dl><div><dt>Prática</dt><dd>Ver o custo da sua velocidade mental e o poço sem fundo das expectativas.</dd></div><div><dt>Entrega</dt><dd>Uma área da vida escolhida para desacelerar e o que você decide devolver.</dd></div></dl></article>
+<article class="pillar"><p class="tag">Pilar 2 · Eu e os relacionamentos</p><h3>Prosperidade nos vínculos</h3><p class="q">Como tornar os meus relacionamentos mais leves e verdadeiros?</p>
+<dl><div><dt>Prática</dt><dd>Identificar as suas âncoras relacionais e o lugar que você ocupa em cada vínculo.</dd></div><div><dt>Entrega</dt><dd>Um passo concreto dado dentro do programa, numa relação que importa para você.</dd></div></dl></article>
+<article class="pillar"><p class="tag">Pilar 3 · Eu e o mundo</p><h3>Prosperidade financeira e realização</h3><p class="q">O que da sua história ainda limita a sua prosperidade?</p>
+<dl><div><dt>Prática</dt><dd>Olhar sistêmico para a relação com dinheiro, trabalho e reconhecimento herdada da família.</dd></div><div><dt>Entrega</dt><dd>O teto que você carrega com nome e um movimento para ultrapassá-lo.</dd></div></dl></article>
+</div>
+</div></section>
+<section class="sec-off" id="carolina"><div class="wrap">
+<aside class="note"><b>Melhoria</b>"Quem é a Carolina" sobe para antes dos depoimentos e da oferta. A cliente confia na mentora antes de ver o preço. A Inteligência Sistêmica ganha uma explicação de uma frase.</aside>
+<div class="author">
+<img src="carolina-azul.jpg" alt="Carolina Wadt" width="832" height="1248" loading="lazy">
+<div>
+<p class="kicker">Quem conduz</p>
+<h2>Carolina Wadt</h2>
+<p>Sou mentora de Inteligência Sistêmica. Há quinze anos sigo no meu próprio caminho de desenvolvimento pessoal, e há cinco trabalho com mulheres que querem reencontrar a sua potência e o prazer de viver a própria vida.</p>
+<p>Inteligência Sistêmica é olhar para a sua vida como parte de um sistema: a família de onde você veio, os vínculos que você construiu e o lugar que você ocupa em cada um. Quando esse lugar fica claro, a vida volta a ser sua.</p>
+<p>Atendo mulheres de vários países a partir de Aveiro, em Portugal. Criei a Mulher Inteira para ajudar a mulher a enxergar o que é realmente seu e a construir a vida que deseja viver.</p>
+<div class="facts"><div><b>15 anos</b><span>de caminho pessoal</span></div><div><b>5 anos</b><span>mentorando mulheres</span></div><div><b>10+</b><span>países atendidos</span></div></div>
+</div></div>
+</div></section>
+<section class="sec-off" id="depoimentos" style="padding-top:0"><div class="wrap" style="padding-top:0">
+<aside class="note"><b>Melhoria</b>Entram os depoimentos com nome da página Black. Saem as frases soltas de WhatsApp, com emojis e sem autora, e as falas que eram da própria Carol. Confirmar autorização de uso com cada aluna.</aside>
+<p class="kicker">Depoimentos</p>
+<h2>O que dizem as alunas</h2>
+<div class="quotes">
+<figure class="quote"><p>Descobri que estava vivendo debaixo de um teto de repetição familiar em relação à minha carreira. A mentoria mal tinha acabado e o meu trabalho já começou a desaguar em lugares que eu nem imaginava.</p><figcaption class="who">Lorena T.</figcaption></figure>
+<figure class="quote"><p>Hoje entendo de onde eu vim e por que me relaciono como me relaciono com as pessoas e com o dinheiro. Já tenho colocado em prática coisas que vieram à tona durante o processo.</p><figcaption class="who">Camila G.</figcaption></figure>
+<figure class="quote"><p>Foi um espaço de olhar profundo para mim mesma e para a minha história. Vi que as áreas da vida estão todas interligadas, e quando a gente olha com verdade para dentro, tudo começa a se reorganizar fora.</p><figcaption class="who">Denise T.</figcaption></figure>
+<figure class="quote"><p>A mentoria foi o divisor de águas para mim. A Carolina consegue, de uma forma leve, levar a gente a ver em nós o valor e a grandeza que temos. Desbloqueei muitas coisas e aprendi a valorizar o meu potencial.</p><figcaption class="who">Janielle M.</figcaption></figure>
+</div>
+<div class="cta-row"><a class="btn" href="#oferta">Garantir minha vaga</a></div>
+</div></section>
+<section class="sec-ink" id="formato"><div class="wrap">
+<aside class="note"><b>Melhoria</b>Respostas que hoje só aparecem no WhatsApp: quando começa, em que horário e fuso, quanto tempo exige e o que fica gravado.</aside>
+<p class="kicker">Formato</p>
+<h2>Cabe numa agenda cheia</h2>
+<div class="format">
+<div><b>6 encontros</b><span>ao vivo e online, um por semana, de 60 a 90 minutos</span></div>
+<div><b>Até 2 h</b><span>por semana, contando o encontro e uma prática de 15 minutos</span></div>
+<div><b>Grupo</b><span>no WhatsApp entre os encontros, com a tutoria da Carolina</span></div>
+<div><b>6 meses</b><span>de acesso às gravações, para rever ou recuperar um encontro <span class="tbc">confirmar</span></span></div>
+<div><b>Início</b><span><span class="tbc">data a confirmar</span></span></div>
+<div><b>Horário</b><span><span class="tbc">dia e hora a confirmar</span> · horário de Brasília e de Lisboa</span></div>
+</div>
+</div></section>
+<section class="sec-light" id="bonus"><div class="wrap">
+<aside class="note"><b>Melhoria</b>Site e página Black passam a ter a mesma lista de bônus. Encontro de dúvidas e sessão individual entram na mesma seção, logo antes do preço.</aside>
+<p class="kicker">Bônus</p>
+<h2>Quatro aulas com especialistas</h2>
+<p class="lead">Cada aula amplia um dos pilares, para você levar o aprendizado para a sua rotina.</p>
+<div class="experts">
+<div class="expert"><img src="ju.jpg" alt="Ju Nogueira" loading="lazy"><p class="role">Imagem e estilo</p><h3>Ju Nogueira</h3><p>Como a sua imagem acompanha quem você está se tornando.</p></div>
+<div class="expert"><img src="nara.jpg" alt="Nara Yacovazzo" loading="lazy"><p class="role">Posicionamento digital</p><h3>Nara Yacovazzo</h3><p>Suas crenças, valores e histórias mostrados nas redes.</p></div>
+<div class="expert"><img src="ana.jpg" alt="Ana Vasconcelos" loading="lazy"><p class="role">Nutrição</p><h3>Ana Vasconcelos</h3><p>Alimentação e energia para uma rotina cheia.</p></div>
+<div class="expert"><img src="lori.jpg" alt="Lore Torsani" loading="lazy"><p class="role">Ciclicidade feminina</p><h3>Lore Torsani</h3><p>Ritmo, descanso e energia para se dedicar sem culpa.</p></div>
+</div>
+<div class="extras">
+<div><b>Encontro de dúvidas ao vivo</b><p>Um encontro extra para trazer as suas dúvidas e receber orientação da Carolina.</p></div>
+<div><b>Sessão individual com a Carolina</b><p>Para as três primeiras inscritas da turma.</p></div>
+</div>
+</div></section>
+<section class="sec-dark" id="oferta"><div class="wrap">
+<aside class="note"><b>Melhoria</b>O total deixa de somar a sessão individual, que é só para as três primeiras. A garantia sai do FAQ e fica colada ao preço. O parcelamento avisa os juros e há caminho para quem paga em euro.</aside>
+<div class="offer">
+<p class="kicker" style="justify-content:center">Inscrição</p>
+<h2>Mentoria Mulher Inteira</h2>
+<ul class="stack">
+<li><span>6 encontros ao vivo com a Carolina</span><em>incluso</em></li>
+<li><span>Grupo de acompanhamento no WhatsApp</span><em>incluso</em></li>
+<li><span>Gravações por 6 meses</span><em>incluso</em></li>
+<li><span>4 aulas com especialistas</span><em>bônus</em></li>
+<li><span>Encontro de dúvidas ao vivo</span><em>bônus</em></li>
+<li class="bonus-few"><span>Sessão individual com a Carolina (três primeiras inscritas)</span><em>bônus</em></li>
+</ul>
+<div class="price-box">
+<p class="deadline">Condição Black Outubro · válida até <span class="tbc">data a confirmar</span></p>
+<p class="old">De R$1.500</p>
+<p class="price">R$1.187</p>
+<p class="installments">à vista, ou em até 12x de R$122,76 no cartão</p>
+<p class="fine">O parcelado inclui os juros do cartão (total de R$1.473,12).</p>
+<a class="btn" href="https://chk.eduzz.com/aapwxpno?country=BRA">Garantir minha vaga</a>
+</div>
+<div class="guarantee"><div class="seal">7<small>dias</small></div><p><b>Garantia de 7 dias.</b> Se não for para você, peça o reembolso em até 7 dias corridos depois da compra e devolvemos o valor integral.</p></div>
+<p class="alt-pay">Mora fora do Brasil? <a class="ghost" href="https://api.whatsapp.com/send/?phone=351929051974&text=Ol%C3%A1%2C+Carol.+Moro+fora+do+Brasil+e+quero+fazer+a+Mulher+Inteira+pagando+em+euro.">Fale com a Carol para pagar em euro</a></p>
+</div>
+</div></section>
+<section class="sec-light" id="para-quem"><div class="wrap narrow">
+<aside class="note"><b>Melhoria</b>O bloco "NÃO é para quem" saiu do meio da página e perdeu o tom de bronca. Perto da oferta, funciona como critério de entrada.</aside>
+<p class="kicker">Antes de decidir</p>
+<h2>A Mulher Inteira é para você se</h2>
+<div class="fit">
+<div><h3>Faz sentido se você</h3><ul><li>Já construiu muito e quer viver o que construiu</li><li>Quer olhar para a própria história com profundidade</li><li>Está disposta a dar passos concretos durante as seis semanas</li></ul></div>
+<div><h3>Talvez não seja agora se você</h3><ul><li>Procura uma fórmula rápida de dinheiro ou de emagrecimento</li><li>Busca apenas motivação para a semana</li><li>Precisa de acompanhamento terapêutico ou médico neste momento</li></ul></div>
+</div>
+</div></section>
+<section class="sec-dark" id="duvidas"><div class="wrap narrow">
+<aside class="note"><b>Melhoria</b>O site não tinha perguntas frequentes. Entram as da página Black e novas respostas para dúvidas que travam a compra: terapia, dinheiro, fuso e pagamento em euro.</aside>
+<p class="kicker">Dúvidas</p>
+<h2>Perguntas frequentes</h2>
+<div class="faq">
+<details><summary>A mentoria é terapia?</summary><p>Não. É uma mentoria em grupo de desenvolvimento pessoal com abordagem sistêmica. Ela não substitui acompanhamento psicológico, psiquiátrico ou médico.</p></details>
+<details><summary>Vou ter resultado financeiro?</summary><p>Não é um curso de finanças e não prometemos valores. Trabalhamos o que trava a sua prosperidade: os padrões herdados na relação com dinheiro, trabalho e reconhecimento. Muitas alunas relatam mudanças nessa área como fruto do processo.</p></details>
+<details><summary>Quanto tempo preciso ter por semana?</summary><p>No máximo duas horas: um encontro ao vivo, uma prática de 15 minutos e o acompanhamento pelo grupo de WhatsApp.</p></details>
+<details><summary>E se eu perder um encontro?</summary><p>Todos os encontros ficam gravados e você tem 6 meses de acesso para assistir quando puder. <span class="tbc">confirmar</span></p></details>
+<details><summary>Moro fora do Brasil. Posso participar?</summary><p>Sim. Os encontros são online e o horário é informado nos fusos de Brasília e de Lisboa. Para pagar em euro, <a class="ghost" href="https://api.whatsapp.com/send/?phone=351929051974&text=Ol%C3%A1%2C+Carol.+Moro+fora+do+Brasil+e+quero+fazer+a+Mulher+Inteira+pagando+em+euro.">fale com a Carol pelo WhatsApp</a>.</p></details>
+<details><summary>Posso desistir depois da compra?</summary><p>Sim. Você tem 7 dias corridos, a partir da compra, para desistir. Nesse prazo, devolvemos integralmente o valor que você pagou.</p></details>
+</div>
+<div class="cta-row"><a class="ghost" href="https://api.whatsapp.com/send/?phone=351929051974&text=Ol%C3%A1%2C+Carol.+Quero+saber+mais+sobre+a+Mentoria+Mulher+Inteira.">Ainda tem dúvida? Fale com a Carol pelo WhatsApp</a></div>
+</div></section>
+<section class="sec-off" id="material"><div class="wrap">
+<aside class="note"><b>Melhoria</b>Captura de e-mail com consentimento (LGPD e RGPD). É o destino das iscas do Instagram e começa a lista de e-mails que a Carol hoje monta à mão. Nesta proposta o formulário não envia nada.</aside>
+<div class="lead-magnet">
+<div>
+<p class="kicker">Ainda não é o momento?</p>
+<h2>Comece por um material gratuito</h2>
+<p class="lead">Receba no seu e-mail <span class="tbc">nome do material a definir</span>, um primeiro exercício sistêmico para enxergar o que você carrega que não é seu.</p>
+</div>
+<form id="lead-form" novalidate>
+<label class="f" for="lead-name">Seu nome</label>
+<input id="lead-name" name="name" type="text" autocomplete="given-name" required>
+<label class="f" for="lead-email">Seu melhor e-mail</label>
+<input id="lead-email" name="email" type="email" autocomplete="email" required>
+<label class="consent" for="lead-consent"><input id="lead-consent" type="checkbox" required> Aceito receber e-mails da Carolina Wadt e sei que posso cancelar quando quiser, conforme a Política de Privacidade.</label>
+<button class="btn" type="submit">Quero receber o material</button>
+<p class="form-ok" id="lead-ok" hidden>Pronto. Na versão final, o material chega no seu e-mail em instantes.</p>
+</form>
+</div>
+</div></section>
+<section class="sec-dark closing"><div class="wrap narrow">
+<p class="kicker" style="justify-content:center">Mulher Inteira</p>
+<h2>Não basta a sua vida ser boa. <em class="g">O seu coração precisa pulsar dentro dela.</em></h2>
+<div class="cta-row"><a class="btn" href="https://chk.eduzz.com/aapwxpno?country=BRA">Garantir minha vaga</a><a class="ghost" href="https://api.whatsapp.com/send/?phone=351929051974&text=Ol%C3%A1%2C+Carol.+Quero+saber+mais+sobre+a+Mentoria+Mulher+Inteira.">Falar pelo WhatsApp</a></div>
+</div></section>
+<footer>
+<aside class="note"><b>Melhoria</b>Termos de Uso e Política de Privacidade novos, escritos para mentoria (não para consultório de psicologia), com LGPD e RGPD. Rascunho em preparação.</aside>
+<p>Carolina Wadt · Instituto Carolina Wadt · Aveiro, Portugal</p>
+<p><a href="#">Termos de Uso</a> · <a href="#">Política de Privacidade</a> · contato: <span class="tbc">e-mail oficial a confirmar</span></p>
+</footer>
+<div class="sticky" id="sticky"><div class="sp"><b>R$1.187 · Black</b>ou 12x de R$122,76</div><a class="btn" href="#oferta">Garantir vaga</a></div>
+<script>
+(function () {
+  var root = document.body, btn = document.getElementById('toggle-notes');
+  btn.addEventListener('click', function () {
+    var off = root.classList.toggle('notes-off');
+    btn.textContent = off ? 'Mostrar notas' : 'Ocultar notas';
+    btn.setAttribute('aria-pressed', off ? 'true' : 'false');
+  });
+  var sticky = document.getElementById('sticky');
+  var start = document.getElementById('metodo'), offer = document.getElementById('oferta');
+  function onScroll() {
+    var y = window.scrollY + window.innerHeight;
+    var past = start.getBoundingClientRect().top < 0;
+    var r = offer.getBoundingClientRect();
+    var inOffer = r.top < window.innerHeight && r.bottom > 0;
+    sticky.classList.toggle('on', past && !inOffer);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  var form = document.getElementById('lead-form');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    document.getElementById('lead-ok').hidden = false;
+  });
+})();
+</script>
