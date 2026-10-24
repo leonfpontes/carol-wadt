@@ -1,0 +1,7 @@
+services:
+  site:
+    build: .
+    container_name: carol-wadt
+    ports:
+      - "8080:80"
+    restart: unless-stopped
