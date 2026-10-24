@@ -4,6 +4,7 @@ import { ISCAS } from "@/content/iscas"
 import { PROPOSTA_BLACK } from "@/content/proposta/black"
 import { PROPOSTA_SITE } from "@/content/proposta/site"
 import type { ConteudoDaProposta } from "@/content/proposta/tipos"
+import type { ConteudoDoSiteProposto } from "@/content/proposta/tipos-site"
 import { RevisorDeTermos } from "@/domain/vocabulario/RevisorDeTermos"
 
 /**
@@ -12,7 +13,7 @@ import { RevisorDeTermos } from "@/domain/vocabulario/RevisorDeTermos"
  */
 
 /** Junta todo o texto que a cliente vê, sem as notas de melhoria (que citam os termos antigos de propósito). */
-function textoVisivel(conteudo: ConteudoDaProposta): string {
+function textoVisivel(conteudo: ConteudoDaProposta | ConteudoDoSiteProposto): string {
   return JSON.stringify(conteudo, (chave, valor) => (chave === "nota" ? undefined : valor))
 }
 
@@ -28,22 +29,39 @@ describe.each(Object.entries(PROPOSTAS))("proposta %s", (_, conteudo) => {
     expect(conteudo.botaoPrincipal).toBe("Garantir minha vaga")
   })
 
-  it("mantém a prosperidade financeira como pilar", () => {
-    expect(conteudo.metodo.pilares.map((p) => p.titulo)).toContain("Prosperidade financeira e realização")
-  })
-
   it("aponta a isca do formulário para uma isca que existe", () => {
     expect(ISCAS.buscar(conteudo.material.isca)).toBeDefined()
   })
 })
 
+describe("proposta do site oficial", () => {
+  it("mantém o slogan da Carol no topo", () => {
+    expect(PROPOSTA_SITE.capa.produto.join(" ")).toBe("De Guerreira a Mulher Inteira")
+  })
+
+  it("mantém a prosperidade financeira como pilar", () => {
+    expect(PROPOSTA_SITE.pilares.itens.map((p) => p.foco)).toContain("Prosperidade financeira e material")
+  })
+
+  it("usa as pinturas do site atual nos pilares e nos resultados", () => {
+    const imagens = [...PROPOSTA_SITE.pilares.itens, ...PROPOSTA_SITE.resultados.itens].map((i) => i.imagem)
+    expect(imagens.every((src) => src.startsWith("/imagens/original/"))).toBe(true)
+  })
+})
+
+describe("proposta da Black", () => {
+  it("mantém a prosperidade financeira como pilar", () => {
+    expect(PROPOSTA_BLACK.metodo.pilares.map((p) => p.titulo)).toContain("Prosperidade financeira e realização")
+  })
+})
+
 describe("preços", () => {
   it("a Black é uma promoção: mais barata que o site", () => {
-    expect(PROPOSTA_SITE.oferta.dados.condicao.aVista.maiorQue(PROPOSTA_BLACK.oferta.dados.condicao.aVista)).toBe(true)
+    expect(PROPOSTA_SITE.inscricao.oferta.condicao.aVista.maiorQue(PROPOSTA_BLACK.oferta.dados.condicao.aVista)).toBe(true)
   })
 
   it("a proposta do site esconde o 'de R$1.500', que é menor que o parcelado", () => {
-    expect(PROPOSTA_SITE.oferta.dados.exibePrecoDe).toBe(false)
+    expect(PROPOSTA_SITE.inscricao.oferta.exibePrecoDe).toBe(false)
     expect(PROPOSTA_BLACK.oferta.dados.exibePrecoDe).toBe(true)
   })
 })

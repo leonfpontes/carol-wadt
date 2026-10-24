@@ -28,7 +28,7 @@ export const MENSAGENS = {
   pagarEmEuro: "Olá, Carol. Moro fora do Brasil e quero fazer a Mulher Inteira pagando em euro.",
 } as const
 
-const pasta = (grupo: "original" | "proposta", arquivo: string) => `/imagens/${grupo}/${arquivo}`
+const pasta = (grupo: "original" | "proposta" | "banco", arquivo: string) => `/imagens/${grupo}/${arquivo}`
 
 export const IMAGENS = {
   original: {
@@ -49,5 +49,14 @@ export const IMAGENS = {
     nara: pasta("proposta", "nara.jpg"),
     ana: pasta("proposta", "ana.jpg"),
     lore: pasta("proposta", "lore.jpg"),
+  },
+  /** Fotos livres da Unsplash; créditos em public/imagens/banco/CREDITOS.md. */
+  banco: {
+    dorPadroes: pasta("banco", "dor-padroes.jpg"),
+    dorSozinha: pasta("banco", "dor-sozinha.jpg"),
+    dorOlharParaSi: pasta("banco", "dor-olhar-para-si.jpg"),
+    dorTeto: pasta("banco", "dor-teto.jpg"),
+    paraQuem: pasta("banco", "para-quem.jpg"),
+    naoEhPara: pasta("banco", "nao-e-para.jpg"),
   },
 } as const

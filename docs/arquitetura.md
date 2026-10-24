@@ -38,7 +38,7 @@ As dependências apontam para baixo. `domain/` não importa React nem nada de ci
 ## Como os princípios aparecem
 
 - **Responsabilidade única.** Cada seção é um componente; cada regra é uma classe. `PaginaProposta` só decide a ordem.
-- **Aberto/Fechado.** `SECOES` (em `features/proposta/PaginaProposta.tsx`) e `SECOES_DO_SITE`/`SECOES_DA_BLACK` (em `pages/paginas-atuais.tsx`) são listas: acrescentar uma seção não muda as existentes. Uma nova plataforma de pagamento é uma nova classe que implementa `Checkout`.
+- **Aberto/Fechado.** `SECOES` (em `features/proposta/PaginaProposta.tsx` e `features/proposta-site/PaginaDoSiteProposto.tsx`) e `SECOES_DO_SITE`/`SECOES_DA_BLACK` (em `pages/paginas-atuais.tsx`) são listas: acrescentar uma seção não muda as existentes. Uma nova plataforma de pagamento é uma nova classe que implementa `Checkout`.
 - **Substituição de Liskov.** Qualquer `RepositorioDeLeads` serve ao `CapturaDeLeads`; os testes usam um repositório em memória.
 - **Segregação de interfaces.** Cada seção recebe só a fatia do conteúdo que usa (`Fatia<"oferta">`), não a página inteira.
 - **Inversão de dependência.** `app/servicos.ts` é a raiz de composição: escolhe o repositório (navegador ou HTTP) a partir de `VITE_LEADS_ENDPOINT`. Nenhum componente instancia infraestrutura.
@@ -68,5 +68,16 @@ Definidas só em `src/app/rotas.ts` (`ROTAS`). Nenhum componente escreve caminho
 
 ## Réplicas x propostas
 
-- **Réplicas** (`features/atual-site`, `features/atual-black`, `content/atual`) copiam o site publicado, inclusive textos e escolhas que a proposta corrige. Usam os tokens `legado-*`. Não "melhore" uma réplica: ela existe para a comparação ser honesta.
-- **Propostas** (`features/proposta`, `content/proposta`) usam a identidade editorial e compartilham seções entre site e Black. A Black parte do conteúdo do site e sobrescreve só selo, oferta e barra fixa.
+São quatro páginas, duas por produto. Site oficial e Black são **produtos distintos**, cada um com a sua identidade.
+
+| Página | Conteúdo | Seções | Identidade |
+|---|---|---|---|
+| Site atual (réplica) | `content/atual/site.ts` | `features/atual-site/` | `legado-*`, Inter |
+| Site proposto | `content/proposta/site.ts` (tipo `ConteudoDoSiteProposto`, em `tipos-site.ts`) | `features/proposta-site/` | `legado-*` (a mesma do site), Playfair + Inter |
+| Black atual (réplica) | `content/atual/black.ts` | `features/atual-black/` | editorial, Manrope |
+| Black proposta | `content/proposta/black.ts` + `comum.ts` (tipo `ConteudoDaProposta`) | `features/proposta/` | editorial (preto e dourado) |
+
+- **Réplicas** copiam o que está publicado, inclusive o que a proposta corrige. Não "melhore" uma réplica: ela existe para a comparação ser honesta.
+- **Proposta do site** (`features/proposta-site/`): `base.tsx` traz as peças na identidade do site (`SecaoDoSite` com fundos `marinho`/`azul`/`creme`/`marfim`/`gelo`, `TituloDoSite`, `RotuloDoSite`, `BotaoDoSite`, `IconeEmCirculo`); `secoes-topo`, `secoes-meio` e `secoes-fim` têm as seções; `PaginaDoSiteProposto` define a ordem e a alternância de fundos.
+- **Proposta da Black** (`features/proposta/`): identidade editorial; `PaginaProposta` define a ordem.
+- O que é comum às duas propostas fica no domínio e em `components/shared/` (notas de melhoria, formulário de material, barra de demonstração), não no visual.

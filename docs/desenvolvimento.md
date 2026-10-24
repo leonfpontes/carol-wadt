@@ -49,7 +49,8 @@ Para qualquer mudança visual:
 |---|---|
 | Texto, preço, link | `src/content/` |
 | Regra de negócio | `src/domain/` (com teste) |
-| Seção nova da proposta | `src/features/proposta/` + item em `SECOES` + campo em `proposta/tipos.ts` |
+| Seção nova da proposta do site | `src/features/proposta-site/` + item em `SECOES` + campo em `proposta/tipos-site.ts` |
+| Seção nova da proposta da Black | `src/features/proposta/` + item em `SECOES` + campo em `proposta/tipos.ts` |
 | Peça visual reutilizável | `src/components/shared/` |
 | Cor, fonte, utilitário | `src/index.css` |
 | Página nova | componente + rota em `app/rotas.ts` e `app/App.tsx` |

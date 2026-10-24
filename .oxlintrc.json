@@ -14,13 +14,14 @@
         "allowExportNames": [
           "useNotas",
           "useTom",
-          "buttonVariants",
-          "badgeVariants"
+          "useFundo",
+          "buttonVariants"
         ]
       }
     ]
   },
   "ignorePatterns": [
-    "dist"
+    "dist",
+    "src/components/ui/**"
   ]
 }

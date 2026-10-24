@@ -23,7 +23,7 @@ interface CartaoDePagina {
 const PAGINAS: CartaoDePagina[] = [
   {
     titulo: "Site principal",
-    descricao: "carolinawadt.com: a página de vendas da Mentoria Mulher Inteira, com preço cheio.",
+    descricao: "carolinawadt.com: a página oficial da Mentoria De Guerreira a Mulher Inteira, com preço cheio. A proposta mantém a identidade azul e dourada do site.",
     atual: ROTAS.atual.site,
     proposta: ROTAS.proposta.site,
     imagem: IMAGENS.original.carolina,
@@ -31,7 +31,7 @@ const PAGINAS: CartaoDePagina[] = [
   },
   {
     titulo: "Página Black Outubro",
-    descricao: "A promoção de Black Friday, com preço especial por tempo limitado. É uma página separada do site.",
+    descricao: "A promoção de Black Friday, com preço especial por tempo limitado. É uma página separada, com identidade própria em preto e dourado.",
     atual: ROTAS.atual.black,
     proposta: ROTAS.proposta.black,
     imagem: IMAGENS.proposta.carolinaFrente,
@@ -40,13 +40,15 @@ const PAGINAS: CartaoDePagina[] = [
 ]
 
 const MELHORIAS = [
-  "Uma identidade só: preto, branco e dourado, nas duas páginas.",
+  "Site oficial e Black continuam distintos, cada um com a sua identidade.",
+  "Slogan \"De Guerreira a Mulher Inteira\" em destaque, com a foto da Carol na capa.",
+  "Dores, para quem é e para quem não é com fotos e ícones em que a visitante se reconhece.",
+  "Como funciona em trilha, da mulher que chega à mulher inteira.",
   "Botão \"Garantir minha vaga\" no lugar de \"Quero entrar na Mulher Inteira\".",
   "Prosperidade financeira como um dos três pilares, sem prometer valores.",
   "Preço honesto: o riscado nunca menor que o parcelado, juros avisados.",
-  "Garantia de 7 dias colada ao preço e caminho para pagar em euro.",
-  "Formato claro: início, horário em Brasília e Lisboa, gravações.",
-  "Depoimentos com nome no lugar de prints soltos de WhatsApp.",
+  "Preço junto de tudo o que está incluso, com garantia de 7 dias e caminho para pagar em euro.",
+  "Depoimentos em carrossel, com estrelas e nome das alunas.",
   "Captura de e-mail com consentimento LGPD e RGPD, pronta para as iscas do Instagram.",
   "Totalmente responsivo, com barra de compra fixa no celular.",
 ]

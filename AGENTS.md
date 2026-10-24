@@ -11,7 +11,7 @@ O repositório tem duas versões de cada página:
 - **Atual** (`/atual/site`, `/atual/black`): réplica fiel do que está publicado hoje. Serve de "antes".
 - **Proposta** (`/proposta/site`, `/proposta/black`): a versão melhorada, com notas amarelas que explicam cada mudança.
 
-O **site** é a página de vendas com preço cheio. A **Black** é a promoção de Black Friday ("Black Outubro"), com preço menor e checkout próprio. São páginas separadas de propósito.
+O **site oficial** é a página de vendas com preço cheio, na identidade azul-marinho e dourada. A **Black** é a promoção de Black Friday ("Black Outubro"), com preço menor, checkout próprio e identidade editorial em preto e dourado. São **produtos distintos**: cada proposta mantém a identidade do seu produto.
 
 Stack: React 19, Vite, TypeScript, Tailwind CSS 4, shadcn/ui (Base UI), React Router, Vitest, oxlint.
 
@@ -35,6 +35,10 @@ docker compose up -d --build  # versão de produção (nginx) em http://localhos
 1. **Botão principal das propostas: "Garantir minha vaga".** Nunca use "Quero entrar na Mulher Inteira" ou "Quero entrar" nas propostas (duplo sentido sexual ao lado da foto da Carol). O teste de conteúdo barra.
 2. **Os demais termos da Carol ficam como ela escreveu.** Não "corrija" "gostosos", "entrega", "se permitir receber", "Hotseat" etc. (decisão registrada em docs/decisoes.md).
 3. **Prosperidade financeira é um dos três pilares.** Nunca remova; nunca prometa valores.
+3a. **"De Guerreira a Mulher Inteira" é o slogan da Carol.** Mantenha na proposta do site.
+3b. **Site e Black não se misturam.** A proposta do site usa só a identidade do site (`legado-*`, `features/proposta-site/base.tsx`); a da Black, só a editorial.
+3c. **Títulos de seção:** mesma fonte e mesmo estilo (Playfair, sem itálico). Destaque só por cor.
+3d. **Nada de avaliação inventada** (notas, médias, número de alunas) sem dado real da Carol.
 4. **Réplicas são fiéis.** Não melhore `features/atual-*` nem `content/atual/*`. Mudança de conteúdo do site no ar deve ser copiada como está.
 5. **Dinheiro só pelo domínio.** Preços com `Preco` (centavos), parcelamento com `CondicaoDePagamento`, ofertas com `Oferta`. Nunca escreva um total à mão.
 6. **Rotas só de `src/app/rotas.ts`.** Não escreva `"/proposta/..."` à mão.
@@ -53,7 +57,9 @@ docker compose up -d --build  # versão de produção (nginx) em http://localhos
 | Texto, preço, link, foto | `src/content/` (`marca.ts` para dados da marca) |
 | Regra de negócio | `src/domain/` + teste em `dominio.test.ts` |
 | Regra de texto | `src/content/conteudo.test.ts` (e `RevisorDeTermos`, se for vocabulário) |
-| Seção nova da proposta | componente em `src/features/proposta/` + campo em `content/proposta/tipos.ts` + item em `SECOES` |
+| Seção nova da proposta do site | componente em `src/features/proposta-site/` + campo em `content/proposta/tipos-site.ts` + item em `SECOES` de `PaginaDoSiteProposto` (respeite a alternância de fundos) |
+| Seção nova da proposta da Black | componente em `src/features/proposta/` + campo em `content/proposta/tipos.ts` + item em `SECOES` de `PaginaProposta` |
+| Foto de banco | `public/imagens/banco/` + linha em `CREDITOS.md` (Unsplash gratuita) |
 | Peça visual reutilizável | `src/components/shared/` |
 | Cor, fonte, utilitário | `src/index.css` |
 | Página nova | componente + `ROTAS` + `<Route>` em `app/App.tsx` |

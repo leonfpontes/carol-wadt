@@ -1,6 +1,37 @@
 # Design system
 
-## Identidade proposta: editorial
+O projeto tem **duas identidades**, uma por produto:
+
+| Produto | Identidade | Onde |
+|---|---|---|
+| Site oficial (réplica e proposta) | Azul-marinho, azul, creme e dourado, turquesa nos detalhes; Playfair + Inter | tokens `legado-*`, `features/proposta-site/base.tsx` |
+| Página Black (réplica e proposta) | Editorial: preto, branco e um acento dourado; Playfair + Manrope | tokens `preto`, `ouro`…, `components/shared/editorial.tsx` |
+
+Nunca leve o visual da Black para o site oficial, nem o contrário.
+
+## Identidade do site oficial
+
+### Cores (`legado-*` em `src/index.css`)
+
+Fundos que alternam escuro e claro: `legado-marinho` (#0D1B2A) e `legado-azul` (#1E3A5F) nos escuros; `legado-creme` (#F8F7F4), `legado-marfim` (#FEFDFB) e `legado-gelo` (#F5F5F2) nos claros. Acentos: `legado-ouro` (#D4AF37), `legado-areia` (#C9A86C), `legado-ouro-escuro`. Botões em gradiente: dourado sobre escuro, azul (`legado-azul` → `legado-azul-medio`) sobre claro.
+
+### Tipografia
+
+- **Todos os títulos de seção:** Playfair Display, peso normal, **sem itálico**. Destaque só por cor (dourado), nunca trocando fonte ou estilo no meio do título.
+- Texto, botões e rótulos: Inter. Rótulos em caixa alta com espaçamento largo e filetes dourados (`RotuloDoSite`).
+
+### Componentes (`features/proposta-site/base.tsx`)
+
+| Componente | Faz |
+|---|---|
+| `SecaoDoSite` | Fundo (`marinho`, `azul`, `creme`, `marfim`, `gelo`), contêiner, respiro e o filete dourado no topo |
+| `RotuloDoSite`, `TituloDoSite`, `ApoioDoSite` | Hierarquia de texto; cores escolhidas pelo fundo |
+| `BotaoDoSite` | Botão-link com os gradientes do site |
+| `IconeEmCirculo` | Ícone dourado num círculo translúcido |
+
+Padrões visuais: fotos e pinturas sempre emolduradas (filete dourado, passe-partout creme ou anel), cartões brancos com sombra suave sobre fundos claros, cartões translúcidos (`bg-white/5`) sobre escuros.
+
+## Identidade da Black: editorial
 
 Preto e branco, como páginas de revista, com **um único acento dourado**. As seções alternam fundo escuro e claro para dar ritmo à leitura.
 
@@ -39,7 +70,7 @@ Preto e branco, como páginas de revista, com **um único acento dourado**. As s
 | `Surgir` | Animação de entrada ao rolar (réplica do site atual) |
 | `estilos.ts` → `estiloDoBotao` | Variantes `cva` do botão, para `<a>`, `<button>` e `<Link>` |
 
-Do shadcn/ui usamos `Accordion` (FAQ), `Input`, `Checkbox` e `Label` (formulário). **Não edite `src/components/ui/`**: componha em `shared/` ou passe `className`. Novos componentes: `npx shadcn@latest add <nome>`.
+Do shadcn/ui usamos `Accordion` (FAQ), `Carousel` (depoimentos do site), `Input`, `Checkbox` e `Label` (formulário). **Não edite `src/components/ui/`**: componha em `shared/` ou passe `className`. Novos componentes: `npx shadcn@latest add <nome>`.
 
 ### Utilitários (`@utility` em `index.css`)
 
@@ -47,7 +78,7 @@ Do shadcn/ui usamos `Accordion` (FAQ), `Input`, `Checkbox` e `Label` (formulári
 
 ## Paleta do site atual (`legado-*`)
 
-Usada **só nas réplicas**: azul-marinho `#0D1B2A`, azul `#1E3A5F`, dourado `#D4AF37`, areia `#C9A86C`, creme `#F8F7F4` e afins. Fonte Inter. Não use esses tokens em código novo.
+Usada na réplica e na proposta do site oficial. Não use esses tokens nas páginas da Black.
 
 ## Responsividade
 

@@ -2,12 +2,12 @@
 
 # Mulher Inteira
 
-**O novo site da Mentoria Mulher Inteira, de Carolina Wadt.**
-Uma página de vendas que fala com a mulher bem resolvida, converte no celular e começa, enfim, a construir uma lista de e-mails própria.
+**O novo site da Mentoria De Guerreira a Mulher Inteira, de Carolina Wadt.**
+Páginas de vendas que falam com a mulher bem resolvida, convertem no celular e começam, enfim, a construir uma lista de e-mails própria.
 
 React 19 · Tailwind CSS 4 · shadcn/ui · TypeScript · Vite
 
-![Proposta da página Black Outubro](docs/imagens/depois-black.jpg)
+![Proposta do site oficial](docs/imagens/depois-site.jpg)
 
 </div>
 
@@ -24,19 +24,28 @@ Este projeto não é só uma proposta em slides. Ele **replica fielmente** o que
 
 Na proposta, notas amarelas explicam **por que** cada coisa mudou. Um botão as esconde para ver a página limpa, como ficaria publicada.
 
-O site é a página de vendas com preço cheio. A página Black é a promoção de Black Friday ("Black Outubro"), com preço menor por tempo limitado. As duas continuam páginas separadas, agora com a mesma identidade.
+São **dois produtos distintos**, e cada proposta respeita o seu:
+
+- **Site oficial** (carolinawadt.com): página de vendas com preço cheio. A proposta **mantém a identidade dele** (azul-marinho, dourado e turquesa, Playfair e Inter, as pinturas dos pilares e dos resultados e o slogan "De Guerreira a Mulher Inteira") e melhora a apresentação seção por seção.
+- **Página Black** ("Black Outubro"): promoção de Black Friday, com preço menor, prazo e checkout próprio. Tem identidade própria, editorial em preto e dourado.
 
 ## O que a proposta resolve
 
 | Problema de hoje | Como fica |
 |---|---|
-| Duas identidades visuais (azul-marinho no site, preto e dourado na Black) | Uma identidade editorial só: preto, branco e um acento dourado |
+| Capa do site sem mostrar o produto nem a Carol; selos genéricos ("Compra Segura") | Slogan em letras grandes, foto da Carol e os benefícios da mentoria; selos de segurança junto do preço |
+| Dores, "para quem é" e "não é para quem" só com texto e ícones repetidos | Fotos de banco e ícones próprios para a visitante se reconhecer |
+| Pinturas dos pilares e resultados soltas no fundo | Molduras douradas e passe-partout, como quadros |
+| "Como funciona" em quatro caixas simples | Trilha que liga quem a visitante é hoje à mulher inteira |
+| Títulos misturando fontes e itálico | Uma fonte e um estilo em todos os títulos |
 | Botão "Quero entrar na Mulher Inteira", com duplo sentido ao lado da foto | **"Garantir minha vaga"**, verificado por teste automático |
 | "De R$1.500" riscado no site, mas o parcelado somava R$1.547,64 | O preço "de" só aparece quando é coerente. A conta é feita pelo código, não à mão |
 | Garantia escondida no FAQ | Selo de 7 dias colado ao preço |
 | Cliente da Europa sem caminho para pagar em euro | Link direto para a Carol, com mensagem pronta |
 | Formato, horário e gravações só respondidos no WhatsApp | Seção "Cabe numa agenda cheia", com fusos de Brasília e Lisboa |
-| Depoimentos como prints soltos, com emojis e sem autora | Depoimentos com nome, de alunas reais |
+| Depoimentos como prints soltos, com emojis e sem autora | Carrossel com estrelas e nome das alunas |
+| Preço ao lado de um computador, sem o que está incluso | Tudo o que a aluna recebe ao lado do preço |
+| Rodapé com dois links | Rodapé completo: navegação, contatos, documentos e selos |
 | Nenhuma lista de e-mails própria, dependência total do alcance do Instagram | Formulário com consentimento LGPD e RGPD e páginas de isca para o Instagram |
 | Termos de Uso de consultório de psicologia | Rascunho escrito para mentoria em grupo |
 

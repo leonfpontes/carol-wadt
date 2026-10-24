@@ -15,13 +15,15 @@ interface FormularioDeMaterialProps {
   textoDoBotao: string
   /** Link do material, mostrado depois do envio quando já está disponível. */
   urlDeEntrega?: string
+  /** Classes do botão de envio, para seguir a identidade da página que usa o formulário. */
+  classeDoBotao?: string
 }
 
 /**
  * Formulário de nome, e-mail e consentimento (LGPD/RGPD).
  * Usado no fim da página proposta e nas páginas de isca do Instagram.
  */
-export function FormularioDeMaterial({ isca, textoDoBotao, urlDeEntrega }: FormularioDeMaterialProps) {
+export function FormularioDeMaterial({ isca, textoDoBotao, urlDeEntrega, classeDoBotao: classeExtra }: FormularioDeMaterialProps) {
   const id = useId()
   const [nome, setNome] = useState("")
   const [email, setEmail] = useState("")
@@ -105,7 +107,7 @@ export function FormularioDeMaterial({ isca, textoDoBotao, urlDeEntrega }: Formu
           {estado.mensagem}
         </p>
       )}
-      <button type="submit" disabled={estado.fase === "enviando"} className={classeDoBotao({ contraste: "sobreClaro" })}>
+      <button type="submit" disabled={estado.fase === "enviando"} className={cn(classeDoBotao({ contraste: "sobreClaro" }), classeExtra)}>
         {estado.fase === "enviando" ? "Enviando…" : textoDoBotao}
       </button>
     </form>
