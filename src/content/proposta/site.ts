@@ -355,7 +355,7 @@ export const PROPOSTA_SITE: ConteudoDoSiteProposto = {
   },
 
   rodape: {
-    nota: "Rodapé completo: navegação, contatos, documentos legais e selos de confiança, com os dados que dependem da Carol marcados.",
+    nota: "Rodapé completo: navegação, contatos (WhatsApp e Instagram), documentos legais e selos de confiança, com os dados que ainda dependem da Carol marcados.",
     marca: "Mentoria da Mulher Inteira",
     descricao: "Mentoria em grupo de Inteligência Sistêmica para mulheres que querem viver por inteiro a vida que construíram.",
     colunas: [
@@ -373,7 +373,7 @@ export const PROPOSTA_SITE: ConteudoDoSiteProposto = {
         titulo: "Fale com a Carol",
         links: [
           { texto: "WhatsApp", destino: whatsappDuvidas, externo: true },
-          { aConfirmar: "Instagram a confirmar" },
+          { texto: `Instagram ${MARCA.arrobaInstagram}`, destino: MARCA.instagram, externo: true },
           { aConfirmar: "e-mail oficial a confirmar" },
           { texto: "Atendimento online · Brasil e Europa", destino: ancora(ANCORAS.oferta) },
         ],

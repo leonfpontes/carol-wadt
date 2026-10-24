@@ -66,6 +66,10 @@ export function PaginaDeIsca() {
       </Secao>
       <footer className="contem pb-10 text-center text-xs text-white/50">
         {MARCA.mentora} · {MARCA.cidade} ·{" "}
+        <a href={MARCA.instagram} target="_blank" rel="noopener noreferrer" className="underline">
+          {MARCA.arrobaInstagram}
+        </a>{" "}
+        ·{" "}
         <Link to={ROTAS.proposta.privacidade} className="underline">
           Política de Privacidade
         </Link>

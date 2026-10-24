@@ -11,6 +11,8 @@ export const MARCA = {
   cidade: "Aveiro, Portugal",
   programa: "Mentoria Mulher Inteira",
   emailAtual: "contato@carolinawadt.com.br",
+  instagram: "https://www.instagram.com/carolinawadt/",
+  arrobaInstagram: "@carolinawadt",
 } as const
 
 export const WHATSAPP = new ContatoWhatsApp("351929051974")
