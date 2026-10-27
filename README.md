@@ -49,7 +49,7 @@ São **dois produtos distintos**, e cada proposta respeita o seu:
 | Nenhuma lista de e-mails própria, dependência total do alcance do Instagram | Formulário com consentimento LGPD e RGPD e páginas de isca para o Instagram |
 | Termos de Uso de consultório de psicologia | Rascunho escrito para mentoria em grupo |
 
-**Prosperidade financeira continua como um dos três pilares**, sem prometer valores.
+**Pilares do site oficial = pilares da Black** (reunião com a Carol em 27/10). As três frentes de prosperidade ficam para o grupo avançado; nunca prometer valores.
 
 ## Iscas do Instagram, prontas para usar
 
@@ -125,7 +125,7 @@ src/
 - **Dinheiro em centavos.** `Preco` é um Value Object; `12 × R$128,97` dá exatamente `R$1.547,64`.
 - **Inversão de dependência.** O formulário depende da interface `RepositorioDeLeads`. Hoje os dados ficam no navegador (demonstração); em produção, basta um adaptador para Brevo, MailerLite ou outra ferramenta.
 - **Aberto para extensão.** Uma página é uma lista ordenada de seções. Mudar a ordem ou acrescentar uma seção não toca nas outras.
-- **Conteúdo testado.** Testes garantem o botão certo, a prosperidade financeira como pilar e preços coerentes.
+- **Conteúdo testado.** Testes garantem o botão certo, os pilares e as especialistas da Black no site e preços coerentes.
 
 Documentação completa em [`docs/`](docs/README.md).
 

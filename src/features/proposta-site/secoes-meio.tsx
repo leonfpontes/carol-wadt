@@ -1,7 +1,7 @@
 /**
  * Proposta do site oficial, meio da página: para quem é, para quem não é,
- * trilha de como funciona, quem é a Carolina e depoimentos em carrossel.
- * Fundos: marinho → marfim → azul → gelo → marinho.
+ * trilha de como funciona, especialistas, quem é a Carolina e depoimentos em
+ * carrossel. Fundos: marinho → marfim → azul (trilha + especialistas) → gelo → marinho.
  */
 import { Quote, Star } from "lucide-react"
 import { ANCORAS, ancora } from "@/app/rotas"
@@ -147,6 +147,36 @@ export function TrilhaDoSite({ conteudo }: Fatia<"trilha">) {
       <Surgir className="mt-14 text-center">
         <BotaoDoSite href={ancora(ANCORAS.oferta)}>{conteudo.botao}</BotaoDoSite>
       </Surgir>
+    </SecaoDoSite>
+  )
+}
+
+/**
+ * Especialistas: continuação da trilha, no mesmo fundo azul e sem o espaço do
+ * topo, para a alternância de fundos continuar escuro → claro. As fotos
+ * ganham a moldura de quadro dos resultados.
+ */
+export function EspecialistasDoSite({ conteudo }: Fatia<"especialistas">) {
+  return (
+    <SecaoDoSite fundo="azul" id="especialistas" className="pt-4 md:pt-6">
+      <NotaDeMelhoria className="mx-auto">{conteudo.nota}</NotaDeMelhoria>
+      <RotuloDoSite>{conteudo.rotulo}</RotuloDoSite>
+      <TituloDoSite>{conteudo.titulo}</TituloDoSite>
+      <ApoioDoSite>{conteudo.apoio}</ApoioDoSite>
+      <ul className="mx-auto mt-12 grid max-w-6xl list-none grid-cols-2 gap-5 p-0 lg:grid-cols-4 lg:gap-6">
+        {conteudo.itens.map((e, i) => (
+          <Surgir key={e.nome} atraso={i * 90}>
+            <li className="min-w-0 text-center">
+              <div className="mx-auto mb-4 max-w-[240px] rounded-sm bg-legado-creme p-2 shadow-2xl shadow-black/30 ring-1 ring-legado-ouro/50">
+                <img src={e.foto} alt={e.nome} loading="lazy" className="block aspect-[4/5] w-full object-cover object-top" />
+              </div>
+              <p className="mb-1 text-[11px] font-medium tracking-[0.2em] text-legado-ouro uppercase">{e.area}</p>
+              <h3 className="mb-1 font-serif text-lg text-legado-gelo md:text-xl">{e.nome}</h3>
+              <p className="text-sm leading-relaxed text-legado-gelo/75">{e.tema}</p>
+            </li>
+          </Surgir>
+        ))}
+      </ul>
     </SecaoDoSite>
   )
 }

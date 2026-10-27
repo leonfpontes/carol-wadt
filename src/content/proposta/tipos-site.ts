@@ -33,6 +33,13 @@ export interface EtapaDaTrilha {
   ponta?: boolean
 }
 
+export interface EspecialistaDoSite {
+  nome: string
+  area: string
+  tema: string
+  foto: string
+}
+
 export interface DepoimentoDoSite {
   texto: string
   autora: string
@@ -75,6 +82,7 @@ export interface ConteudoDoSiteProposto {
   paraQuem: { nota: string; rotulo: string; titulo: string; apoio: string; foto: string; itens: ItemIlustrado[] }
   naoEhPara: { nota: string; rotulo: string; titulo: string; destaque: string; apoio: string; foto: string; itens: ItemIlustrado[]; botao: string }
   trilha: { nota: string; rotulo: string; titulo: string; apoio: string; etapas: EtapaDaTrilha[]; botao: string }
+  especialistas: { nota: string; rotulo: string; titulo: string; apoio: string; itens: EspecialistaDoSite[] }
   mentora: {
     nota: string
     titulo: string

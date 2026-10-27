@@ -43,7 +43,7 @@ A página Black é uma **promoção de Black Friday**: preço menor de propósit
 ## Regras de texto
 
 0. **O nome é "Mentoria da Mulher Inteira".** "De Guerreira a Mulher Inteira" saiu por decisão da Carol. A palavra "Guerreira" não aparece nas propostas; só na réplica do site atual.
-1. **Prosperidade financeira é um dos três pilares.** Não remover nem esconder. Nunca prometer valores.
+1. **Pilares do site oficial = pilares da Black** (Mulher Mais Viva, O Poço Sem Fundo das Expectativas, Me posicionando nos meus relacionamentos), por decisão da Carol em 27/10. As três frentes de prosperidade, com a prosperidade financeira, ficam para o grupo avançado ("Rainha da própria vida"). Nunca prometer valores.
 2. **Botão principal: "Garantir minha vaga"** (na barra do celular, "Garantir vaga"). "Quero entrar na Mulher Inteira" e "Quero entrar" ficam proibidos nas propostas por terem duplo sentido sexual ao lado da foto da Carol.
 3. **Os demais termos da Carol ficam como ela escreveu** ("gostosos", "entrega", "se permitir receber", "Hotseat"...). Decisão do Leonardo: fazem parte do apelo sentimental. Estão listados em `RevisorDeTermos` com severidade `atencao`, só para consulta.
 4. **Voz da Carol:** frases curtas, segunda pessoa ("você"), acolhedora, sem linguagem de guerra ou bronca.

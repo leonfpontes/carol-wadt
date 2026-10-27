@@ -44,8 +44,12 @@ describe("proposta do site oficial", () => {
     expect(textoVisivel(PROPOSTA_BLACK)).not.toMatch(/guerreira/i)
   })
 
-  it("mantém a prosperidade financeira como pilar", () => {
-    expect(PROPOSTA_SITE.pilares.itens.map((p) => p.foco)).toContain("Prosperidade financeira e material")
+  it("usa os pilares da página Black (reunião de 27/10)", () => {
+    expect(PROPOSTA_SITE.pilares.itens.map((p) => p.nome)).toEqual(BLACK_ATUAL.pilares.itens.map((p) => p.titulo.replace(/^Pilar \d: /, "")))
+  })
+
+  it("traz as quatro especialistas da Black", () => {
+    expect(PROPOSTA_SITE.especialistas.itens.map((e) => e.nome)).toEqual(BLACK_ATUAL.especialistas.itens.map((e) => e.nome))
   })
 
   it("usa as pinturas do site atual nos pilares e nos resultados", () => {

@@ -2,6 +2,18 @@
 
 Registro curto das decisões que mudam o que o código faz. A mais recente fica em cima.
 
+## 2026-10-27 · Reunião com a Carol: pilares e especialistas da Black no site
+
+A Carol aprovou a proposta do site e explicou que a estrutura anterior (três frentes de prosperidade: interna, relacional e financeira) entregava demais. Essa estrutura vai para um grupo **avançado**, "Rainha da própria vida", que ainda não tem data nem página. Por enquanto tudo é um pacote só, a Mentoria da Mulher Inteira, sem falar em avançado ou standard.
+
+- Os **pilares do site oficial passam a ser os da Black**: Mulher Mais Viva, O Poço Sem Fundo das Expectativas e Me posicionando nos meus relacionamentos. Substitui a decisão "Prosperidade financeira continua como pilar" (24/10) para o site.
+- As **quatro especialistas** da Black (Ju Nogueira, Nara Yacovazzo, Ana Vasconcelos e Lore Torsani) entram no site, numa seção logo depois da trilha, e na lista do que está incluso.
+- "Quem é Carolina" cita Austrália e Japão; o número de credibilidade vira "10+ países", como a Carol escreveu na Black.
+- Rodapé ganha o Livro de Reclamações (obrigatório para quem vende online em Portugal), com o link a confirmar.
+- Ficam de fora: contador de vagas e chamada para a Black no site oficial.
+- A proposta da Black não muda: a Carol usa a página atual até o fim da campanha. Depois, o site oficial é o permanente, e promoções futuras só trocam o valor.
+- Os textos novos de cada seção virão da Carol.
+
 ## 2026-10-24 · Proposta do site oficial na identidade do site
 
 O site oficial e a Black são produtos distintos. A proposta do site **não** usa o visual da Black: mantém cores (azul-marinho, azul, creme, dourado, turquesa), fontes (Playfair nos títulos, Inter no texto), as pinturas dos pilares e dos resultados e os textos da Carol. Mudanças pedidas pelo Leonardo, seção por seção:
@@ -29,7 +41,7 @@ Consequência: `RevisorDeTermos` tem severidade `bloqueia` só para o botão; o 
 
 A Black é uma promoção de Black Friday ("Black Outubro"), com preço menor (R$1.187 à vista) e checkout próprio. O site tem o preço cheio (R$1.247). Cada página tem a sua proposta, com a sua identidade (veja a decisão acima).
 
-## 2026-10-24 · Prosperidade financeira continua como pilar
+## 2026-10-24 · Prosperidade financeira continua como pilar (substituída no site em 27/10)
 
 "Eu e o mundo · Prosperidade financeira e realização" é um dos três pilares. A proposta reforça o tema sem prometer valores (FAQ "Vou ter resultado financeiro?").
 

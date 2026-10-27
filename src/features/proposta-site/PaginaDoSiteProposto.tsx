@@ -4,7 +4,7 @@ import { BarraDeDemonstracao } from "@/components/shared/BarraDeDemonstracao"
 import { AlternadorDeNotas, ProvedorDeNotas } from "@/components/shared/notas"
 import type { ConteudoDoSiteProposto } from "@/content/proposta/tipos-site"
 import { BarraFixaDoSite, DuvidasDoSite, InscricaoDoSite, MaterialDoSite, RodapeDoSite } from "@/features/proposta-site/secoes-fim"
-import { DepoimentosDoSite, MentoraDoSite, NaoEhParaDoSite, ParaQuemDoSite, TrilhaDoSite } from "@/features/proposta-site/secoes-meio"
+import { DepoimentosDoSite, EspecialistasDoSite, MentoraDoSite, NaoEhParaDoSite, ParaQuemDoSite, TrilhaDoSite } from "@/features/proposta-site/secoes-meio"
 import { CapaDoSite, DoresDoSite, PilaresDoSite, ResultadosDoSite } from "@/features/proposta-site/secoes-topo"
 import { useBarraFixa } from "@/features/proposta/use-barra-fixa"
 import { useTitulo } from "@/hooks/use-titulo"
@@ -14,7 +14,7 @@ import { useTitulo } from "@/hooks/use-titulo"
  *
  * Os fundos alternam escuro e claro, como no site atual:
  * capa (marinho) · dores (creme) · resultados (azul) · pilares (creme) ·
- * para quem (marinho) · não é para (marfim) · trilha (azul) · Carolina (gelo) ·
+ * para quem (marinho) · não é para (marfim) · trilha e especialistas (azul) · Carolina (gelo) ·
  * depoimentos (marinho) · inscrição (creme) · dúvidas (marinho) ·
  * material (creme) · rodapé (marinho).
  * Reordenar ou incluir uma seção é mexer só nesta lista.
@@ -29,6 +29,7 @@ const SECOES: Renderizador[] = [
   (c) => <ParaQuemDoSite conteudo={c.paraQuem} botao={c.botaoPrincipal} />,
   (c) => <NaoEhParaDoSite conteudo={c.naoEhPara} botao={c.botaoPrincipal} />,
   (c) => <TrilhaDoSite conteudo={c.trilha} botao={c.botaoPrincipal} />,
+  (c) => <EspecialistasDoSite conteudo={c.especialistas} botao={c.botaoPrincipal} />,
   (c) => <MentoraDoSite conteudo={c.mentora} botao={c.botaoPrincipal} />,
   (c) => <DepoimentosDoSite conteudo={c.depoimentos} botao={c.botaoPrincipal} />,
   (c) => <InscricaoDoSite conteudo={c.inscricao} botao={c.botaoPrincipal} />,
