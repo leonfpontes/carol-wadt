@@ -7,7 +7,7 @@ import { ProvedorDePublicacao } from "@/components/shared/publicacao"
 import type { ConteudoDoSiteProposto } from "@/content/proposta/tipos-site"
 import { BarraFixaDoSite, DuvidasDoSite, InscricaoDoSite, MaterialDoSite, RodapeDoSite } from "@/features/proposta-site/secoes-fim"
 import { DepoimentosDoSite, EspecialistasDoSite, MentoraDoSite, NaoEhParaDoSite, ParaQuemDoSite, TrilhaDoSite } from "@/features/proposta-site/secoes-meio"
-import { CapaDoSite, DoresDoSite, PilaresDoSite, ResultadosDoSite } from "@/features/proposta-site/secoes-topo"
+import { CapaDoSite, DoresDoSite, FaixaDaCampanha, PilaresDoSite, ResultadosDoSite } from "@/features/proposta-site/secoes-topo"
 import { useBarraFixa } from "@/features/proposta/use-barra-fixa"
 import { useTitulo } from "@/hooks/use-titulo"
 
@@ -67,6 +67,8 @@ export function PaginaDoSiteProposto({ conteudo, publicado = false }: PaginaDoSi
             </div>
           </>
         )}
+        {/* No ar, a faixa da campanha ocupa o topo; na demonstração o topo é da barra de demonstração. */}
+        {publicado && conteudo.chamadaDaCampanha && <FaixaDaCampanha conteudo={conteudo.chamadaDaCampanha} />}
         <main className="font-inter text-base leading-normal">
           {SECOES.filter((secao) => comMaterial || secao !== MATERIAL).map((renderizar, i) => (
             <Fragment key={i}>{renderizar(pagina)}</Fragment>

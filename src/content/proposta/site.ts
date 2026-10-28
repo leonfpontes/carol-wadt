@@ -53,6 +53,13 @@ export const PROPOSTA_SITE: ConteudoDoSiteProposto = {
     apoio: "Mesma identidade do site atual; as notas amarelas explicam cada mudança.",
   },
   botaoPrincipal: BOTAO_PRINCIPAL,
+  // Black Outubro (pedido do Leonardo, 28/10). Apague este campo quando a campanha acabar.
+  chamadaDaCampanha: {
+    destaque: "Black Outubro",
+    texto: "Condição especial da Mentoria da Mulher Inteira por tempo limitado.",
+    botao: "Ver a oferta",
+    url: "https://claude.ai/artifact/9eAkwWkMs1MDrzPW3VimXN",
+  },
 
   capa: {
     nota: "O nome da mentoria aparece de cara, em letras grandes, ao lado da foto da Carol (como na Black). Sai o \"De Guerreira a\": o nome passa a ser Mentoria da Mulher Inteira. No lugar de \"Compra Segura\", \"Satisfação Garantida\" e \"Privacidade Protegida\", entram os benefícios da mentoria. Os selos de segurança descem para junto do preço. As \"3 frentes de prosperidade\" dão lugar às aulas com especialistas (reunião de 27/10).",

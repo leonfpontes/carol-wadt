@@ -54,6 +54,11 @@ export interface ColunaDoRodape {
 export interface ConteudoDoSiteProposto {
   meta: { titulo: string; descricao: string }
   faixaDaProposta: { titulo: string; apoio: string }
+  /**
+   * Faixa fixa no topo do site que chama para uma campanha (ex.: Black).
+   * Opcional: sem ela, a faixa some. Tirar a campanha é apagar o campo.
+   */
+  chamadaDaCampanha?: { destaque: string; texto: string; botao: string; url: string }
   botaoPrincipal: string
   capa: {
     nota: string

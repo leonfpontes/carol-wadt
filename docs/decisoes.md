@@ -2,6 +2,10 @@
 
 Registro curto das decisões que mudam o que o código faz. A mais recente fica em cima.
 
+## 2026-10-28 · Faixa da Black no site oficial
+
+A pedido do Leonardo, o site no ar ganha uma faixa fixa no topo (acompanha a rolagem) chamando para a página da Black Outubro. Substitui a decisão de 27/10 de deixar a chamada da Black fora do site. A faixa usa as cores do site, não as da Black, e vem do campo opcional `chamadaDaCampanha` em `content/proposta/site.ts`: quando a campanha acabar, basta apagar o campo.
+
 ## 2026-10-28 · A proposta do site vira o site oficial no ar
 
 O Leonardo aprovou a proposta do site e pediu para publicá-la como site principal na Vercel.

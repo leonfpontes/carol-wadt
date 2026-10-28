@@ -3,6 +3,7 @@
  * Ordem dos fundos: marinho → creme → azul → creme (alternância escuro/claro).
  */
 import { ANCORAS, ancora } from "@/app/rotas"
+import { LinkExterno } from "@/components/shared/LinkExterno"
 import { NotaDeMelhoria } from "@/components/shared/notas"
 import { Surgir } from "@/components/shared/Surgir"
 import type { ConteudoDoSiteProposto } from "@/content/proposta/tipos-site"
@@ -159,5 +160,24 @@ export function PilaresDoSite({ conteudo }: Fatia<"pilares">) {
         ))}
       </div>
     </SecaoDoSite>
+  )
+}
+
+/**
+ * Faixa da campanha: fica presa no topo durante a rolagem e leva para a
+ * página da promoção. Usa as cores do site (marinho e dourado), não as da Black.
+ */
+export function FaixaDaCampanha({ conteudo }: { conteudo: NonNullable<ConteudoDoSiteProposto["chamadaDaCampanha"]> }) {
+  return (
+    <LinkExterno
+      href={conteudo.url}
+      className="sticky top-0 z-30 flex items-center justify-center gap-3 border-b border-legado-ouro/30 bg-legado-marinho/95 px-4 py-2.5 font-inter text-legado-gelo backdrop-blur transition-colors hover:bg-legado-marinho"
+    >
+      <span className="shrink-0 rounded-full bg-gradient-to-r from-legado-ouro to-legado-ouro-escuro px-2.5 py-0.5 text-[11px] font-bold tracking-wider text-legado-marinho uppercase">
+        {conteudo.destaque}
+      </span>
+      <span className="hidden text-sm sm:inline">{conteudo.texto}</span>
+      <span className="shrink-0 text-sm font-semibold whitespace-nowrap text-legado-ouro underline underline-offset-4">{conteudo.botao} →</span>
+    </LinkExterno>
   )
 }
