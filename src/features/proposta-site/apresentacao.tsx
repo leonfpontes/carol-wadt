@@ -8,7 +8,7 @@ import type { ReactNode } from "react"
 import { ancora } from "@/app/rotas"
 import { cn } from "@/lib/utils"
 
-export const idDoCapitulo = (indice: number) => `capitulo-${indice + 1}`
+const idDoCapitulo = (indice: number) => `capitulo-${indice + 1}`
 
 /** Uma camada da apresentação. Não muda a semântica: as seções de dentro seguem com seus títulos. */
 export function Capitulo({ indice, children }: { indice: number; children: ReactNode }) {
