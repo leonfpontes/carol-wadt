@@ -15,6 +15,7 @@
           "useNotas",
           "useTom",
           "useFundo",
+          "usePublicado",
           "buttonVariants"
         ]
       }

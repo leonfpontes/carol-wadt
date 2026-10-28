@@ -2,6 +2,7 @@
  * Peças da identidade editorial (preto, branco e um acento dourado).
  * Usadas pelas páginas propostas e pela página de isca.
  */
+import { usePublicado } from "@/components/shared/publicacao"
 import type { VariantProps } from "class-variance-authority"
 import { createContext, useContext, type AnchorHTMLAttributes, type ReactNode } from "react"
 import { estiloDoBotao } from "@/components/shared/estilos"
@@ -77,6 +78,7 @@ export function Destaque({ children }: { children: ReactNode }) {
 /** Marca tracejada para o que depende de confirmação da Carol. */
 export function AConfirmarTag({ children }: { children: ReactNode }) {
   const tom = useTom()
+  if (usePublicado()) return null
   return (
     <span
       className={cn(

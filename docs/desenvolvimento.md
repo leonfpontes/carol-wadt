@@ -19,7 +19,7 @@ npm run verificar       # lint + testes + build (rode antes de concluir)
 ## Testes
 
 - `src/domain/dominio.test.ts`: dinheiro, parcelamento, oferta, WhatsApp, leads, iscas.
-- `src/content/conteudo.test.ts`: botão "Garantir minha vaga", termos bloqueados, prosperidade financeira como pilar, preços coerentes, isca existente.
+- `src/content/conteudo.test.ts`: botão "Garantir minha vaga", termos bloqueados, pilares e especialistas da Black no site, preços coerentes, isca existente.
 
 Teste regra de negócio no domínio, não em componente.
 

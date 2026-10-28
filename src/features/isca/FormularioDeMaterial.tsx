@@ -96,7 +96,7 @@ export function FormularioDeMaterial({ isca, textoDoBotao, urlDeEntrega, classeD
         />
         <Label htmlFor={`${id}-aceite`} className="block text-[13px] leading-snug font-normal text-texto-claro">
           {TEXTO_DE_CONSENTIMENTO.replace("Política de Privacidade.", "")}
-          <Link to={ROTAS.proposta.privacidade} className="underline underline-offset-2">
+          <Link to={ROTAS.privacidade} className="underline underline-offset-2">
             Política de Privacidade
           </Link>
           .

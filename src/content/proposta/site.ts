@@ -3,7 +3,6 @@ import {
   Crown,
   Eye,
   Feather,
-  Gem,
   Gift,
   GraduationCap,
   HeartHandshake,
@@ -34,6 +33,10 @@ import { Oferta } from "@/domain/oferta/Oferta"
  * Mantém a identidade do site da Carol (cores, fontes, pinturas dos pilares e
  * dos resultados, textos) e melhora a apresentação seção por seção, seguindo
  * o direcionamento do Leonardo de 24/10/2026. Não é a página Black.
+ *
+ * Reunião com a Carol (27/10/2026): os pilares passam a ser os da Black (os
+ * três pilares de prosperidade vão para o grupo avançado, "Rainha da própria
+ * vida", ainda sem página) e as quatro especialistas entram no site.
  */
 
 const condicao = new CondicaoDePagamento(Preco.reais(1247), 12, Preco.reais(128.97))
@@ -41,9 +44,9 @@ const whatsappDuvidas = WHATSAPP.linkComMensagem("Olá. Quero informações da M
 
 export const PROPOSTA_SITE: ConteudoDoSiteProposto = {
   meta: {
-    titulo: "Mentoria Mulher Inteira · Carolina Wadt",
+    titulo: "Mentoria da Mulher Inteira · Carolina Wadt",
     descricao:
-      "Mentoria em grupo de Inteligência Sistêmica com Carolina Wadt: seis encontros ao vivo para prosperar em você, nos seus relacionamentos e no seu dinheiro.",
+      "Mentoria em grupo de Inteligência Sistêmica com Carolina Wadt: seis encontros ao vivo para encontrar o seu lugar de potência dentro da sua própria vida.",
   },
   faixaDaProposta: {
     titulo: "Proposta de melhoria de carolinawadt.com · versão para avaliação.",
@@ -52,15 +55,15 @@ export const PROPOSTA_SITE: ConteudoDoSiteProposto = {
   botaoPrincipal: BOTAO_PRINCIPAL,
 
   capa: {
-    nota: "O nome da mentoria aparece de cara, em letras grandes, ao lado da foto da Carol (como na Black). Sai o \"De Guerreira a\": o nome passa a ser Mentoria da Mulher Inteira. No lugar de \"Compra Segura\", \"Satisfação Garantida\" e \"Privacidade Protegida\", entram os benefícios da mentoria. Os selos de segurança descem para junto do preço.",
+    nota: "O nome da mentoria aparece de cara, em letras grandes, ao lado da foto da Carol (como na Black). Sai o \"De Guerreira a\": o nome passa a ser Mentoria da Mulher Inteira. No lugar de \"Compra Segura\", \"Satisfação Garantida\" e \"Privacidade Protegida\", entram os benefícios da mentoria. Os selos de segurança descem para junto do preço. As \"3 frentes de prosperidade\" dão lugar às aulas com especialistas (reunião de 27/10).",
     rotulo: "Mentoria em grupo de Inteligência Sistêmica",
     produto: ["Mentoria da", "Mulher Inteira"],
     promessa: "A vida que você construiu está pronta. Agora falta você estar inteira nela.",
     apoio:
-      "Seis encontros ao vivo com Carolina Wadt para destravar a prosperidade em três frentes: em você, nos seus relacionamentos e no seu dinheiro.",
+      "Seis encontros ao vivo com Carolina Wadt para mulheres que dão conta de tudo e querem voltar a sentir a própria vida.",
     beneficios: [
       { icone: Video, titulo: "6 encontros ao vivo", texto: "com a Carolina, em grupo" },
-      { icone: Gem, titulo: "3 frentes de prosperidade", texto: "interna, relacional e financeira" },
+      { icone: GraduationCap, titulo: "4 aulas com especialistas", texto: "imagem, redes, nutrição e ciclicidade" },
       { icone: Users, titulo: "Grupo de apoio", texto: "mulheres no mesmo caminho" },
       { icone: MonitorPlay, titulo: "6 meses de acesso", texto: "às aulas gravadas" },
     ],
@@ -103,28 +106,28 @@ export const PROPOSTA_SITE: ConteudoDoSiteProposto = {
   },
 
   pilares: {
-    nota: "As pinturas da chave, das alianças e do diamante deixam de flutuar no fundo azul e ganham moldura dourada dentro de cartões. Prosperidade financeira continua como pilar.",
+    nota: "Os pilares passam a ser os da página Black, como a Carol pediu na reunião de 27/10: a estrutura anterior, com as três frentes de prosperidade, entregava demais e vai para o grupo avançado. As pinturas ganham moldura dourada dentro de cartões; confirmar com a Carol qual pintura combina com cada pilar.",
     rotulo: "O método",
-    titulo: "Por que a Mentoria Mulher Inteira é única?",
-    apoio: "Três pilares que trabalham a prosperidade de dentro para fora.",
+    titulo: "Por que a Mentoria da Mulher Inteira é única?",
+    apoio: "Três pilares. Cada um tem uma pergunta, uma prática e uma entrega concreta.",
     itens: [
       {
-        nome: "Eu comigo",
-        foco: "Prosperidade interna e autoestima",
-        texto: "Como sair do modo de guerra e me permitir cuidar e ser cuidada.",
+        nome: "Mulher Mais Viva",
+        foco: "Quanto da sua presença você perde para dar conta de tudo?",
+        texto: "Você vê o custo da sua velocidade mental e escolhe uma área da vida para desacelerar.",
         imagem: IMAGENS.original.pilarChave,
       },
       {
-        nome: "Eu e os relacionamentos",
-        foco: "Prosperidade emocional e relacional",
-        texto: "Construir conexões saudáveis e significativas.",
-        imagem: IMAGENS.original.pilarAliancas,
+        nome: "O Poço Sem Fundo das Expectativas",
+        foco: "De quem é o jeito certo que eu defendo?",
+        texto: "Você faz o inventário do que carrega, decide o que devolve e assume só o que é seu de verdade.",
+        imagem: IMAGENS.original.pilarDiamante,
       },
       {
-        nome: "Eu e o mundo",
-        foco: "Prosperidade financeira e material",
-        texto: "Prosperidade financeira e realização pessoal.",
-        imagem: IMAGENS.original.pilarDiamante,
+        nome: "Me posicionando nos meus relacionamentos",
+        foco: "Como fazer os meus relacionamentos serem mais gostosos de viver?",
+        texto: "Você identifica as suas âncoras relacionais e dá um passo concreto dentro do programa.",
+        imagem: IMAGENS.original.pilarAliancas,
       },
     ],
   },
@@ -201,7 +204,7 @@ export const PROPOSTA_SITE: ConteudoDoSiteProposto = {
         icone: Gift,
         rotulo: "Etapa 3",
         titulo: "Bônus",
-        texto: "Hotseat ao vivo de tira-dúvidas e aula com expert convidada.",
+        texto: "Quatro aulas com especialistas e um hotseat ao vivo de tira-dúvidas.",
       },
       {
         icone: MonitorPlay,
@@ -214,23 +217,36 @@ export const PROPOSTA_SITE: ConteudoDoSiteProposto = {
         icone: Crown,
         rotulo: "Onde você chega",
         titulo: "Mulher inteira",
-        texto: "Presente na própria vida, com relações mais leves e a prosperidade fluindo em todas as frentes.",
+        texto: "Presente na própria vida, com relações mais leves e espaço para o que é seu de verdade.",
       },
     ],
     botao: "Quero viver isso",
   },
 
+  especialistas: {
+    nota: "As quatro especialistas da página Black passam a fazer parte do time da Mulher Inteira (reunião de 27/10). A seção continua a trilha, no mesmo fundo, com as fotos emolduradas como os quadros do site.",
+    rotulo: "Bônus",
+    titulo: "Quatro aulas com especialistas",
+    apoio: "Cada aula amplia um dos pilares, para você levar o aprendizado para a sua rotina.",
+    itens: [
+      { nome: "Ju Nogueira", area: "Imagem e estilo", tema: "Como a sua imagem acompanha quem você está se tornando.", foto: IMAGENS.proposta.ju },
+      { nome: "Nara Yacovazzo", area: "Posicionamento digital", tema: "Suas crenças, valores e histórias mostrados nas redes.", foto: IMAGENS.proposta.nara },
+      { nome: "Ana Vasconcelos", area: "Nutrição", tema: "Alimentação e energia para uma rotina cheia.", foto: IMAGENS.proposta.ana },
+      { nome: "Lore Torsani", area: "Ciclicidade feminina", tema: "Ritmo, descanso e potência de entrega sem culpa.", foto: IMAGENS.proposta.lore },
+    ],
+  },
+
   mentora: {
-    nota: "Seção mantida: limpa e com sensação premium. Entram só dois números de credibilidade e ela sobe para antes dos depoimentos e do preço.",
+    nota: "Seção mantida: limpa e com sensação premium. Entram só dois números de credibilidade e ela sobe para antes dos depoimentos e do preço. A Austrália e o Japão entram na história (reunião de 27/10).",
     titulo: "Quem é Carolina Wadt?",
     resumo:
       "Mentora de Inteligência Sistêmica, com uma década e meia de experiência em autoconhecimento e desenvolvimento pessoal.",
     historia:
-      "Desde muito cedo, me dediquei ao estudo do autoconhecimento, mas percebi que a verdadeira transformação só veio quando conheci a Visão Sistêmica. Foi com um processo estruturado e o apoio certo que minha vida começou a mudar, e passei a alcançar resultados concretos. Já trabalhei e apoiei pessoas na América Latina, Estados Unidos e Europa. Hoje, minha missão é guiar você no mesmo caminho, para viver a prosperidade integral que só uma mulher inteira pode viver!",
+      "Desde muito cedo, me dediquei ao estudo do autoconhecimento, mas percebi que a verdadeira transformação só veio quando conheci a Visão Sistêmica. Foi com um processo estruturado e o apoio certo que minha vida começou a mudar, e passei a alcançar resultados concretos. Já trabalhei e apoiei pessoas na América Latina, nos Estados Unidos, na Europa, na Austrália e no Japão. Hoje, minha missão é guiar você no mesmo caminho, para viver a prosperidade integral que só uma mulher inteira pode viver!",
     foto: IMAGENS.original.carolina,
     numeros: [
       { valor: "15 anos", legenda: "de autoconhecimento" },
-      { valor: "3 continentes", legenda: "América Latina, EUA e Europa" },
+      { valor: "10+ países", legenda: "da América Latina à Austrália e ao Japão" },
     ],
   },
 
@@ -284,10 +300,10 @@ export const PROPOSTA_SITE: ConteudoDoSiteProposto = {
     apoio: "Um processo estruturado para você ter suporte e ferramentas práticas ao longo da sua jornada.",
     inclui: [
       { icone: Video, titulo: "6 encontros ao vivo", texto: "Online, em grupo, com a Carolina. Um por semana." },
-      { icone: Sprout, titulo: "Trabalho sistêmico", texto: "Movimentos profundos nos três pilares de prosperidade." },
+      { icone: Sprout, titulo: "Trabalho sistêmico", texto: "Movimentos profundos nos três pilares da mentoria." },
       { icone: MessageCircle, titulo: "Grupo de acompanhamento", texto: "No WhatsApp, entre um encontro e outro." },
       { icone: Mic, titulo: "Hotseat ao vivo", texto: "Um encontro extra para tirar as suas dúvidas." },
-      { icone: GraduationCap, titulo: "Aula com expert convidada", texto: "Para ampliar um dos pilares na sua rotina." },
+      { icone: GraduationCap, titulo: "4 aulas com especialistas", texto: "Imagem, redes, nutrição e ciclicidade feminina." },
       { icone: CalendarCheck, titulo: "6 meses de plataforma", texto: "Todas as aulas gravadas, para rever quando quiser." },
     ],
     oferta: new Oferta({
@@ -381,10 +397,11 @@ export const PROPOSTA_SITE: ConteudoDoSiteProposto = {
       {
         titulo: "Informações",
         links: [
-          { texto: "Termos de Uso", destino: ROTAS.proposta.termos },
-          { texto: "Política de Privacidade", destino: ROTAS.proposta.privacidade },
+          { texto: "Termos de Uso", destino: ROTAS.termos },
+          { texto: "Política de Privacidade", destino: ROTAS.privacidade },
           { texto: "Garantia de 7 dias", destino: ancora(ANCORAS.oferta) },
           { aConfirmar: "CNPJ / NIF a confirmar" },
+          { aConfirmar: "Livro de Reclamações (link a confirmar)" },
         ],
       },
     ],

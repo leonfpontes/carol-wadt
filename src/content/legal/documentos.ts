@@ -176,7 +176,8 @@ export const ATUAIS: Record<"privacidade" | "termos", DocumentoLegal> = {
   },
 }
 
-const contatoOficial: TextoRico = ["Escreva para ", { aConfirmar: "e-mail oficial a confirmar" }, "."]
+// Enquanto o e-mail oficial não é confirmado, o contato é o WhatsApp da Carol.
+const contatoOficial: TextoRico = ["Fale com a Carol pelo WhatsApp, no link que fica no rodapé do site."]
 const AVISO = "Rascunho para avaliação da Carol. Precisa de revisão jurídica antes de ser publicado."
 
 export const PROPOSTOS: Record<"privacidade" | "termos", DocumentoLegal> = {
