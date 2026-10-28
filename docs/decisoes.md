@@ -4,7 +4,7 @@ Registro curto das decisões que mudam o que o código faz. A mais recente fica 
 
 ## 2026-10-28 · Site oficial rola como apresentação
 
-Pedido do Leonardo: o conteúdo fica igual, mas a rolagem deixa de ser linear e passa a contar a história em camadas, como slides que se sobrepõem (capítulos que grudam e são cobertos pelo seguinte, com profundidade). Sem bibliotecas novas: CSS `position: sticky` e um hook que mede a rolagem. Respeita "reduzir movimento" e continua responsivo. Detalhes em `docs/design-system.md`.
+Pedido do Leonardo: o conteúdo fica igual, mas a rolagem deixa de ser linear e conta a história. A primeira versão (todos os capítulos grudando e sendo cobertos do mesmo jeito) foi recusada por ser repetitiva; cada capítulo agora tem um movimento próprio (rolagem lateral, coisas que vêm do fundo ou recuam, revelações, texto que acende). Sem bibliotecas novas. Respeita "reduzir movimento" e continua responsivo. Detalhes em `docs/design-system.md`.
 
 ## 2026-10-28 · Faixa da Black no site oficial
 

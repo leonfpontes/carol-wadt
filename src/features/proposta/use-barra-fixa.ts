@@ -12,11 +12,9 @@ export function useBarraFixa(idInicio: string, idOferta: string) {
       const inicio = document.getElementById(idInicio)
       const oferta = document.getElementById(idOferta)
       if (!inicio || !oferta) return
-      const altura = window.innerHeight
-      const passouDoInicio = inicio.getBoundingClientRect().top < 0 || topoDoCapituloSeguinte(inicio) < altura
+      const passouDoInicio = inicio.getBoundingClientRect().top < 0
       const r = oferta.getBoundingClientRect()
-      // No site em apresentação, a oferta continua "na tela" depois de coberta pelo capítulo seguinte.
-      const ofertaNaTela = r.top < Math.min(altura, topoDoCapituloSeguinte(oferta)) && r.bottom > 0
+      const ofertaNaTela = r.top < window.innerHeight && r.bottom > 0
       setVisivel(passouDoInicio && !ofertaNaTela)
     }
     avaliar()
@@ -29,14 +27,4 @@ export function useBarraFixa(idInicio: string, idOferta: string) {
   }, [idInicio, idOferta])
 
   return visivel
-}
-
-/**
- * Topo, na tela, do capítulo que vem depois do que contém o elemento, na
- * rolagem em apresentação do site (capítulos grudam e são cobertos).
- * Fora da apresentação (Black, réplicas) devolve infinito e não muda nada.
- */
-function topoDoCapituloSeguinte(elemento: Element) {
-  const seguinte = elemento.closest("[data-capitulo]")?.nextElementSibling
-  return seguinte ? seguinte.getBoundingClientRect().top : Infinity
 }

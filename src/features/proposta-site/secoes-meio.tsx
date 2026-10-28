@@ -2,6 +2,10 @@
  * Proposta do site oficial, meio da página: para quem é, para quem não é,
  * trilha de como funciona, especialistas, quem é a Carolina e depoimentos em
  * carrossel. Fundos: marinho → marfim → azul (trilha + especialistas) → gelo → marinho.
+ * Movimento: a foto de "para quem" se revela num círculo, os itens de "não é
+ * para" são riscados ao passar, a trilha se desenha, as especialistas chegam
+ * como cartas, a Carolina tem paralaxe e texto que acende, e os depoimentos
+ * entram de lado.
  */
 import { Quote, Star } from "lucide-react"
 import { ANCORAS, ancora } from "@/app/rotas"
@@ -9,6 +13,7 @@ import { NotaDeMelhoria } from "@/components/shared/notas"
 import { Surgir } from "@/components/shared/Surgir"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import type { ConteudoDoSiteProposto, ItemIlustrado } from "@/content/proposta/tipos-site"
+import { Cena } from "@/features/proposta-site/apresentacao"
 import { ApoioDoSite, BotaoDoSite, IconeEmCirculo, RotuloDoSite, SecaoDoSite, TituloDoSite } from "@/features/proposta-site/base"
 import { cn } from "@/lib/utils"
 
@@ -24,26 +29,34 @@ function FotoEmoldurada({ src, className }: { src: string; className?: string })
   )
 }
 
-function ListaIlustrada({ itens, escuro }: { itens: ItemIlustrado[]; escuro: boolean }) {
+/** "desliza": itens entram de lado, alternando; "risca": cada item é riscado ao passar (quem a mentoria não atende). */
+type EfeitoDaLista = "desliza" | "risca"
+
+function ListaIlustrada({ itens, escuro, efeito }: { itens: ItemIlustrado[]; escuro: boolean; efeito: EfeitoDaLista }) {
   return (
     <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
       {itens.map(({ icone: Icone, titulo, texto }, i) => (
-        <Surgir key={titulo} atraso={i * 90}>
-          <li
-            className={cn(
-              "flex h-full gap-4 rounded-2xl p-5",
-              escuro ? "bg-white/5 ring-1 ring-white/10" : "bg-white shadow-lg shadow-legado-azul/5 ring-1 ring-legado-areia/25",
-            )}
-          >
-            <IconeEmCirculo>
-              <Icone className="h-5 w-5" aria-hidden="true" />
-            </IconeEmCirculo>
-            <div className="min-w-0">
-              <h3 className={cn("mb-1 text-lg font-semibold", escuro ? "text-legado-ouro" : "text-legado-azul")}>{titulo}</h3>
-              <p className={cn("text-base leading-relaxed", escuro ? "text-legado-gelo/75" : "text-legado-azul/70")}>{texto}</p>
-            </div>
-          </li>
-        </Surgir>
+        <Cena
+          key={titulo}
+          como="li"
+          ordem={i % 2}
+          estilo={{ "--de": i % 2 ? "70px" : "-70px" }}
+          className={cn(
+            efeito === "desliza" ? "cena-desliza" : "cena-risca",
+            "flex h-full gap-4 rounded-2xl p-5",
+            escuro ? "bg-white/5 ring-1 ring-white/10" : "bg-white shadow-lg shadow-legado-azul/5 ring-1 ring-legado-areia/25",
+          )}
+        >
+          <IconeEmCirculo>
+            <Icone className="h-5 w-5" aria-hidden="true" />
+          </IconeEmCirculo>
+          <div className="min-w-0">
+            <h3 className={cn("relative mb-1 text-lg font-semibold", escuro ? "text-legado-ouro" : "text-legado-azul")}>
+              <span className="cena-risco">{titulo}</span>
+            </h3>
+            <p className={cn("text-base leading-relaxed", escuro ? "text-legado-gelo/75" : "text-legado-azul/70")}>{texto}</p>
+          </div>
+        </Cena>
       ))}
     </ul>
   )
@@ -57,10 +70,10 @@ export function ParaQuemDoSite({ conteudo }: Fatia<"paraQuem">) {
       <TituloDoSite>{conteudo.titulo}</TituloDoSite>
       <ApoioDoSite>{conteudo.apoio}</ApoioDoSite>
       <div className="mx-auto mt-12 grid max-w-6xl items-center gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
-        <Surgir>
+        <Cena className="cena-revela">
           <FotoEmoldurada src={conteudo.foto} />
-        </Surgir>
-        <ListaIlustrada itens={conteudo.itens} escuro />
+        </Cena>
+        <ListaIlustrada itens={conteudo.itens} escuro efeito="desliza" />
       </div>
     </SecaoDoSite>
   )
@@ -80,11 +93,11 @@ export function NaoEhParaDoSite({ conteudo }: Fatia<"naoEhPara">) {
       <ApoioDoSite>{conteudo.apoio}</ApoioDoSite>
       <div className="mx-auto mt-12 grid max-w-6xl items-center gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
         <div className="order-2 lg:order-1">
-          <ListaIlustrada itens={conteudo.itens} escuro={false} />
+          <ListaIlustrada itens={conteudo.itens} escuro={false} efeito="risca" />
         </div>
-        <Surgir className="order-1 lg:order-2">
+        <Cena className="cena-desbota order-1 lg:order-2">
           <FotoEmoldurada src={conteudo.foto} />
-        </Surgir>
+        </Cena>
       </div>
       <Surgir className="mt-12 text-center">
         <BotaoDoSite href={ancora(ANCORAS.oferta)}>{conteudo.botao}</BotaoDoSite>
@@ -105,19 +118,24 @@ export function TrilhaDoSite({ conteudo }: Fatia<"trilha">) {
       <RotuloDoSite>{conteudo.rotulo}</RotuloDoSite>
       <TituloDoSite>{conteudo.titulo}</TituloDoSite>
       <ApoioDoSite>{conteudo.apoio}</ApoioDoSite>
-      <ol className="relative mx-auto mt-14 max-w-4xl list-none p-0">
+      <Cena como="ol" className="relative mx-auto mt-14 max-w-4xl list-none p-0">
         <span
           aria-hidden="true"
-          className="absolute top-2 bottom-2 left-6 w-px bg-gradient-to-b from-legado-ouro/10 via-legado-ouro to-legado-ouro/10 md:left-1/2"
+          className="cena-trilha-linha absolute top-2 bottom-2 left-6 w-px bg-gradient-to-b from-legado-ouro/10 via-legado-ouro to-legado-ouro/10 md:left-1/2"
         />
         {conteudo.etapas.map((etapa, i) => {
           const Icone = etapa.icone
           const aDireita = i % 2 === 1
           return (
-            <li key={etapa.titulo} className="relative mb-10 grid grid-cols-[48px_minmax(0,1fr)] gap-5 last:mb-0 md:grid-cols-[minmax(0,1fr)_56px_minmax(0,1fr)] md:gap-8">
+            <Cena
+              key={etapa.titulo}
+              como="li"
+              estilo={{ "--de": aDireita ? "60px" : "-60px" }}
+              className="relative mb-10 grid grid-cols-[48px_minmax(0,1fr)] gap-5 last:mb-0 md:grid-cols-[minmax(0,1fr)_56px_minmax(0,1fr)] md:gap-8"
+            >
               <div
                 className={cn(
-                  "relative z-10 flex h-12 w-12 items-center justify-center rounded-full md:col-start-2 md:h-14 md:w-14",
+                  "cena-trilha-marco relative z-10 flex h-12 w-12 items-center justify-center rounded-full md:col-start-2 md:h-14 md:w-14",
                   etapa.ponta
                     ? "bg-gradient-to-br from-legado-ouro to-legado-ouro-escuro text-legado-marinho shadow-lg shadow-legado-ouro/30"
                     : "border border-legado-ouro/60 bg-legado-marinho text-legado-ouro",
@@ -125,10 +143,7 @@ export function TrilhaDoSite({ conteudo }: Fatia<"trilha">) {
               >
                 <Icone className="h-5 w-5 md:h-6 md:w-6" aria-hidden="true" />
               </div>
-              <Surgir
-                atraso={i * 80}
-                className={cn("min-w-0 md:row-start-1", aDireita ? "md:col-start-3" : "md:col-start-1 md:text-right")}
-              >
+              <div className={cn("cena-trilha-cartao min-w-0 md:row-start-1", aDireita ? "md:col-start-3" : "md:col-start-1 md:text-right")}>
                 <div
                   className={cn(
                     "rounded-2xl p-5 md:p-6",
@@ -139,11 +154,11 @@ export function TrilhaDoSite({ conteudo }: Fatia<"trilha">) {
                   <h3 className="mb-2 font-serif text-xl text-legado-gelo md:text-2xl">{etapa.titulo}</h3>
                   <p className="text-sm leading-relaxed text-legado-gelo/75 md:text-base">{etapa.texto}</p>
                 </div>
-              </Surgir>
-            </li>
+              </div>
+            </Cena>
           )
         })}
-      </ol>
+      </Cena>
       <Surgir className="mt-14 text-center">
         <BotaoDoSite href={ancora(ANCORAS.oferta)}>{conteudo.botao}</BotaoDoSite>
       </Surgir>
@@ -156,6 +171,9 @@ export function TrilhaDoSite({ conteudo }: Fatia<"trilha">) {
  * topo, para a alternância de fundos continuar escuro → claro. As fotos
  * ganham a moldura de quadro dos resultados.
  */
+/** Giro de cada especialista ao ser "distribuída" na mesa, como uma carta. */
+const GIROS_DAS_CARTAS = ["-9deg", "6deg", "-5deg", "10deg"]
+
 export function EspecialistasDoSite({ conteudo }: Fatia<"especialistas">) {
   return (
     <SecaoDoSite fundo="azul" id="especialistas" className="pt-4 md:pt-6">
@@ -165,16 +183,20 @@ export function EspecialistasDoSite({ conteudo }: Fatia<"especialistas">) {
       <ApoioDoSite>{conteudo.apoio}</ApoioDoSite>
       <ul className="mx-auto mt-12 grid max-w-6xl list-none grid-cols-2 gap-5 p-0 lg:grid-cols-4 lg:gap-6">
         {conteudo.itens.map((e, i) => (
-          <Surgir key={e.nome} atraso={i * 90}>
-            <li className="min-w-0 text-center">
-              <div className="mx-auto mb-4 max-w-[240px] rounded-sm bg-legado-creme p-2 shadow-2xl shadow-black/30 ring-1 ring-legado-ouro/50">
-                <img src={e.foto} alt={e.nome} loading="lazy" className="block aspect-[4/5] w-full object-cover object-top" />
-              </div>
-              <p className="mb-1 text-[11px] font-medium tracking-[0.2em] text-legado-ouro uppercase">{e.area}</p>
-              <h3 className="mb-1 font-serif text-lg text-legado-gelo md:text-xl">{e.nome}</h3>
-              <p className="text-sm leading-relaxed text-legado-gelo/75">{e.tema}</p>
-            </li>
-          </Surgir>
+          <Cena
+            key={e.nome}
+            como="li"
+            ordem={i % 4}
+            estilo={{ "--giro": GIROS_DAS_CARTAS[i % GIROS_DAS_CARTAS.length] }}
+            className="cena-carta min-w-0 text-center"
+          >
+            <div className="mx-auto mb-4 max-w-[240px] rounded-sm bg-legado-creme p-2 shadow-2xl shadow-black/30 ring-1 ring-legado-ouro/50">
+              <img src={e.foto} alt={e.nome} loading="lazy" className="block aspect-[4/5] w-full object-cover object-top" />
+            </div>
+            <p className="mb-1 text-[11px] font-medium tracking-[0.2em] text-legado-ouro uppercase">{e.area}</p>
+            <h3 className="mb-1 font-serif text-lg text-legado-gelo md:text-xl">{e.nome}</h3>
+            <p className="text-sm leading-relaxed text-legado-gelo/75">{e.tema}</p>
+          </Cena>
         ))}
       </ul>
     </SecaoDoSite>
@@ -186,17 +208,19 @@ export function MentoraDoSite({ conteudo, botao }: Fatia<"mentora">) {
     <SecaoDoSite fundo="gelo" id="carolina">
       <NotaDeMelhoria className="mx-auto">{conteudo.nota}</NotaDeMelhoria>
       <div className="mx-auto grid max-w-5xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        <Surgir className="flex justify-center lg:justify-start">
+        <Cena className="cena-paralaxe flex justify-center lg:justify-start">
           <div className="relative rounded-2xl bg-gradient-to-br from-legado-ouro via-legado-ouro-claro to-legado-ouro-moldura p-1 shadow-xl">
             <img src={conteudo.foto} alt="Carolina Wadt" loading="lazy" className="h-auto w-72 rounded-xl object-cover sm:w-80 md:w-96" />
           </div>
-        </Surgir>
+        </Cena>
         <Surgir className="space-y-6 text-center lg:text-left">
           <div>
             <TituloDoSite centro={false} className="text-center text-3xl md:text-4xl lg:text-left lg:text-4xl">
               {conteudo.titulo}
             </TituloDoSite>
-            <p className="text-lg leading-relaxed text-legado-marinho/80">{conteudo.resumo}</p>
+            <Cena como="p" className="cena-leitura text-lg leading-relaxed text-legado-marinho/80" estilo={{ "--tinta": "var(--color-legado-marinho)" }}>
+              <span>{conteudo.resumo}</span>
+            </Cena>
           </div>
           <p className="leading-relaxed text-legado-marinho/70">{conteudo.historia}</p>
           <div className="flex justify-center gap-10 lg:justify-start">
@@ -241,32 +265,34 @@ export function DepoimentosDoSite({ conteudo }: Fatia<"depoimentos">) {
         <Estrelas className="[&_svg]:h-6 [&_svg]:w-6" />
         <p className="text-sm text-legado-gelo/60">{conteudo.nota5}</p>
       </div>
-      <Carousel opts={{ align: "start", loop: true }} className="mx-auto max-w-6xl px-0 md:px-14">
-        <CarouselContent className="-ml-5">
-          {conteudo.itens.map((d, i) => (
-            <CarouselItem key={i} className="basis-[88%] pl-5 sm:basis-1/2 lg:basis-1/3">
-              <figure className="relative m-0 flex h-full flex-col rounded-2xl bg-legado-creme p-7 text-legado-azul shadow-xl shadow-black/20">
-                <Quote className="absolute top-6 right-6 h-8 w-8 text-legado-ouro/30" aria-hidden="true" />
-                <Estrelas className="mb-4" />
-                <blockquote className="m-0 flex-1 text-base leading-relaxed text-legado-azul/85">{d.texto}</blockquote>
-                <figcaption className="mt-6 flex items-center gap-3 border-t border-legado-areia/30 pt-5">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-legado-ouro to-legado-ouro-escuro font-serif text-lg text-legado-marinho">
-                    {inicial(d.autora)}
-                  </span>
-                  <span>
-                    <b className="block text-sm text-legado-azul">{d.autora}</b>
-                    <span className="text-xs text-legado-azul/60">{d.detalhe}</span>
-                  </span>
-                </figcaption>
-              </figure>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <div className="mt-8 flex justify-center gap-3 md:mt-0">
-          <CarouselPrevious className="static size-11 translate-y-0 border-legado-ouro/50 bg-transparent text-legado-ouro hover:bg-legado-ouro hover:text-legado-marinho md:absolute md:top-1/2 md:left-0 md:-translate-y-1/2" />
-          <CarouselNext className="static size-11 translate-y-0 border-legado-ouro/50 bg-transparent text-legado-ouro hover:bg-legado-ouro hover:text-legado-marinho md:absolute md:top-1/2 md:right-0 md:-translate-y-1/2" />
-        </div>
-      </Carousel>
+      <Cena className="cena-entra-lado">
+        <Carousel opts={{ align: "start", loop: true }} className="mx-auto max-w-6xl px-0 md:px-14">
+          <CarouselContent className="-ml-5">
+            {conteudo.itens.map((d, i) => (
+              <CarouselItem key={i} className="basis-[88%] pl-5 sm:basis-1/2 lg:basis-1/3">
+                <figure className="relative m-0 flex h-full flex-col rounded-2xl bg-legado-creme p-7 text-legado-azul shadow-xl shadow-black/20">
+                  <Quote className="absolute top-6 right-6 h-8 w-8 text-legado-ouro/30" aria-hidden="true" />
+                  <Estrelas className="mb-4" />
+                  <blockquote className="m-0 flex-1 text-base leading-relaxed text-legado-azul/85">{d.texto}</blockquote>
+                  <figcaption className="mt-6 flex items-center gap-3 border-t border-legado-areia/30 pt-5">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-legado-ouro to-legado-ouro-escuro font-serif text-lg text-legado-marinho">
+                      {inicial(d.autora)}
+                    </span>
+                    <span>
+                      <b className="block text-sm text-legado-azul">{d.autora}</b>
+                      <span className="text-xs text-legado-azul/60">{d.detalhe}</span>
+                    </span>
+                  </figcaption>
+                </figure>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="mt-8 flex justify-center gap-3 md:mt-0">
+            <CarouselPrevious className="static size-11 translate-y-0 border-legado-ouro/50 bg-transparent text-legado-ouro hover:bg-legado-ouro hover:text-legado-marinho md:absolute md:top-1/2 md:left-0 md:-translate-y-1/2" />
+            <CarouselNext className="static size-11 translate-y-0 border-legado-ouro/50 bg-transparent text-legado-ouro hover:bg-legado-ouro hover:text-legado-marinho md:absolute md:top-1/2 md:right-0 md:-translate-y-1/2" />
+          </div>
+        </Carousel>
+        </Cena>
     </SecaoDoSite>
   )
 }

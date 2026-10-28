@@ -209,34 +209,175 @@
 
 /*
  * Rolagem em forma de apresentação (site oficial).
- * Cada capítulo gruda quando o fim dele chega ao rodapé da tela e o seguinte
- * sobe por cima, com cantos arredondados e sombra; o de baixo recua (encolhe,
- * sobe um pouco e escurece) conforme é coberto. As variáveis --topo, --origem
- * e --cobertura vêm de features/proposta-site/use-apresentacao.ts.
- * Com "reduzir movimento" ligado, nada disso se aplica e a página rola reta.
+ *
+ * Cada capítulo tem o seu movimento, escrito aqui como classe `cena-*`. As
+ * variáveis de 0 a 1 (--entrada, --saida, --progresso, --percurso, --leitura,
+ * --p) vêm de features/proposta-site/use-apresentacao.ts; --i é a posição do
+ * item na sequência. Os valores padrão (1 na entrada, 0 na saída) são o estado
+ * final, para nada ficar escondido se o script não rodar.
+ * Com "reduzir movimento" ligado, nenhuma regra abaixo vale e a página fica estática.
  */
 @media (prefers-reduced-motion: no-preference) {
-  .apresentacao > .capitulo {
-    position: sticky;
-    top: var(--topo, 0px);
-    overflow: clip;
-    transform-origin: 50% var(--origem, 50%);
-    transform: translate3d(0, calc(var(--cobertura, 0) * -2.5vh), 0) scale(calc(1 - var(--cobertura, 0) * 0.06));
+  /* Progresso de entrada com escalonamento: itens lado a lado entram um depois do outro. */
+  [class*="cena-"] {
+    --e: clamp(0, calc(var(--entrada, 1) * 1.3 - var(--i, 0) * 0.15), 1);
   }
-  .apresentacao > .capitulo + .capitulo {
-    border-radius: 1.25rem 1.25rem 0 0;
-    box-shadow: 0 -20px 44px -16px color-mix(in srgb, var(--color-legado-marinho) 60%, transparent);
-    @media (width >= 48rem) {
-      border-radius: 2.25rem 2.25rem 0 0;
+
+  /* Capa: o texto sobe e se dissipa, o nome se abre para os lados e a foto recua para o fundo. */
+  .cena-capa-texto {
+    /* translate, não transform: o bloco já usa a animação de entrada (animate-surgir). */
+    translate: 0 calc(var(--saida, 0) * -30%);
+    opacity: calc(1 - var(--saida, 0) * 1.4);
+  }
+  .cena-capa-esq {
+    transform: translateX(calc(var(--saida, 0) * -22vw));
+  }
+  .cena-capa-dir {
+    transform: translateX(calc(var(--saida, 0) * 22vw));
+  }
+  .cena-capa-foto {
+    transform: translateY(calc(var(--saida, 0) * 22%)) scale(calc(1 - var(--saida, 0) * 0.35));
+    opacity: calc(1 - var(--saida, 0) * 0.8);
+    filter: blur(calc(var(--saida, 0) * 5px));
+  }
+  .cena-capa-faixa {
+    transform: translateY(calc(var(--saida, 0) * 60%));
+  }
+
+  /* Palco lateral: a tela fica presa e o trilho de cartões anda para a esquerda. */
+  .palco-lateral-quadro {
+    position: sticky;
+    top: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: 4rem 2rem;
+  }
+  .palco-lateral-trilho {
+    display: flex;
+    width: max-content;
+    max-width: none;
+    margin-inline: 0;
+    gap: 1.5rem;
+    transform: translateX(calc(var(--p, 0) * var(--deslocamento, 0px) * -1));
+    will-change: transform;
+  }
+  .palco-lateral-trilho > * {
+    flex: none;
+    width: min(74vw, 340px, calc((100vh - 18rem) * 0.8));
+    /* Cada cartão endireita ao chegar ao centro do trilho. */
+    transform: rotate(calc((var(--p, 0) * 3 - var(--i, 0)) * 2deg));
+  }
+  .palco-lateral-trilho > :nth-child(1) { --i: 0; }
+  .palco-lateral-trilho > :nth-child(2) { --i: 1; }
+  .palco-lateral-trilho > :nth-child(3) { --i: 2; }
+  .palco-lateral-trilho > :nth-child(4) { --i: 3; }
+
+  /* Do fundo para a frente: chega de longe, inclinada e desfocada. */
+  .cena-do-fundo {
+    transform: perspective(900px) translateZ(calc((1 - var(--e)) * -360px)) rotateX(calc((1 - var(--e)) * 22deg));
+    opacity: var(--e);
+    filter: blur(calc((1 - var(--e)) * 6px));
+  }
+
+  /* Pilares: chegam empilhados como um baralho e se abrem. No celular, um cobre o outro. */
+  .cena-baralho {
+    --abre: clamp(0, calc((var(--entrada, 1) - 0.35) / 0.65), 1);
+  }
+  @media (width >= 48rem) {
+    .cena-baralho > * {
+      position: relative;
+      z-index: calc(3 - var(--i, 0) * var(--i, 0) + var(--i, 0));
+      transform: translateX(calc((1 - var(--abre)) * var(--dx, 0px))) translateY(calc((1 - var(--abre)) * 48px))
+        rotate(calc((1 - var(--abre)) * var(--giro, 0deg)));
     }
   }
-  .apresentacao > .capitulo::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 40;
-    pointer-events: none;
-    background: var(--color-legado-marinho);
-    opacity: calc(var(--cobertura, 0) * 0.6);
+  @media (width < 48rem) {
+    .cena-baralho > * {
+      position: sticky;
+      top: calc(4.5rem + var(--i, 0) * 1.25rem);
+    }
+  }
+
+  /* Revela: a foto se abre de um círculo. */
+  .cena-revela {
+    clip-path: circle(calc(var(--e) * 80%) at 50% 45%);
+  }
+
+  /* Desliza: entra de lado, alternando a direção. */
+  .cena-desliza {
+    transform: translateX(calc((1 - var(--e)) * var(--de, 60px)));
+    opacity: var(--e);
+  }
+
+  /* Risca: entra de lado e, ao passar pelo meio da tela, o título é riscado e o item vai para trás. */
+  .cena-risca {
+    --risco: clamp(0, calc((var(--leitura, 1) - 0.7) / 0.3), 1);
+    transform: translateX(calc((1 - var(--e)) * var(--de, 60px))) scale(calc(1 - var(--risco) * 0.04));
+    opacity: calc(var(--e) - var(--risco) * 0.3);
+  }
+  .cena-risca .cena-risco {
+    background: linear-gradient(var(--color-legado-ouro-escuro), var(--color-legado-ouro-escuro)) no-repeat 0 58% / calc(var(--risco) * 100%) 2px;
+  }
+  /* A foto ao lado perde a cor no mesmo ritmo. */
+  .cena-desbota {
+    filter: grayscale(calc(var(--leitura, 1) * 0.85));
+  }
+
+  /* Trilha: a linha dourada se desenha com a rolagem; cada marco acende quando ela chega. */
+  .cena-trilha-linha {
+    transform-origin: top;
+    transform: scaleY(var(--percurso, 1));
+  }
+  .cena-trilha-marco {
+    transform: scale(calc(0.55 + var(--e) * 0.45));
+    opacity: calc(0.3 + var(--e) * 0.7);
+    box-shadow: 0 0 calc(var(--e) * 28px) color-mix(in srgb, var(--color-legado-ouro) 45%, transparent);
+  }
+  .cena-trilha-cartao {
+    transform: translateX(calc((1 - var(--e)) * var(--de, 60px)));
+    opacity: var(--e);
+  }
+  @media (width < 48rem) {
+    .cena-trilha-cartao {
+      --de: 40px;
+    }
+  }
+
+  /* Cartas: as especialistas são distribuídas na mesa, girando até se assentar. */
+  .cena-carta {
+    transform: translateY(calc((1 - var(--e)) * 140px)) rotate(calc((1 - var(--e)) * var(--giro, 8deg)));
+    opacity: var(--e);
+  }
+
+  /* Paralaxe: a foto anda mais devagar que o texto. */
+  .cena-paralaxe {
+    transform: translateY(calc((0.5 - var(--progresso, 0.5)) * 90px));
+  }
+
+  /* Leitura: o texto acende da esquerda para a direita, linha a linha, conforme a rolagem. */
+  .cena-leitura > span {
+    --acesa: calc(var(--leitura, 1) * 100%);
+    background: linear-gradient(
+      90deg,
+      var(--tinta) var(--acesa),
+      color-mix(in srgb, var(--tinta) 22%, transparent) var(--acesa)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Entra de lado: o carrossel desliza da direita. */
+  .cena-entra-lado {
+    transform: translateX(calc((1 - var(--e)) * 30%));
+    opacity: var(--e);
+  }
+
+  /* Holofote: o cartão do preço vem do fundo e ganha brilho. */
+  .cena-holofote {
+    transform: translateY(calc((1 - var(--e)) * 80px)) scale(calc(0.8 + var(--e) * 0.2));
+    opacity: calc(0.2 + var(--e) * 0.8);
   }
 }

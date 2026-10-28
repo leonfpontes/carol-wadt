@@ -9,11 +9,11 @@ import { ANCORAS, ancora } from "@/app/rotas"
 import { LinkExterno } from "@/components/shared/LinkExterno"
 import { NotaDeMelhoria } from "@/components/shared/notas"
 import { usePublicado } from "@/components/shared/publicacao"
-import { Surgir } from "@/components/shared/Surgir"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import type { AConfirmar } from "@/content/proposta/tipos"
 import type { ConteudoDoSiteProposto } from "@/content/proposta/tipos-site"
 import { FormularioDeMaterial } from "@/features/isca/FormularioDeMaterial"
+import { Cena } from "@/features/proposta-site/apresentacao"
 import { ApoioDoSite, BotaoDoSite, IconeEmCirculo, RotuloDoSite, SecaoDoSite, TituloDoSite } from "@/features/proposta-site/base"
 import { cn } from "@/lib/utils"
 
@@ -51,21 +51,25 @@ export function InscricaoDoSite({ conteudo, botao }: Fatia<"inscricao">) {
       <div className="mx-auto mt-12 grid max-w-6xl items-start gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-10">
         <ul className="grid list-none gap-4 p-0 sm:grid-cols-2">
           {conteudo.inclui.map(({ icone: Icone, titulo, texto }, i) => (
-            <Surgir key={titulo} atraso={i * 70}>
-              <li className="flex h-full gap-4 rounded-2xl bg-white p-5 shadow-lg shadow-legado-azul/5 ring-1 ring-legado-areia/25">
-                <IconeEmCirculo className="h-11 w-11">
-                  <Icone className="h-5 w-5" aria-hidden="true" />
-                </IconeEmCirculo>
-                <div className="min-w-0">
-                  <h3 className="mb-1 font-semibold text-legado-azul">{titulo}</h3>
-                  <p className="text-sm leading-relaxed text-legado-azul/70">{texto}</p>
-                </div>
-              </li>
-            </Surgir>
+            <Cena
+              key={titulo}
+              como="li"
+              ordem={i % 2}
+              className="cena-do-fundo flex h-full gap-4 rounded-2xl bg-white p-5 shadow-lg shadow-legado-azul/5 ring-1 ring-legado-areia/25"
+            >
+              <IconeEmCirculo className="h-11 w-11">
+                <Icone className="h-5 w-5" aria-hidden="true" />
+              </IconeEmCirculo>
+              <div className="min-w-0">
+                <h3 className="mb-1 font-semibold text-legado-azul">{titulo}</h3>
+                <p className="text-sm leading-relaxed text-legado-azul/70">{texto}</p>
+              </div>
+            </Cena>
           ))}
         </ul>
-        <Surgir className="lg:sticky lg:top-20">
-          <div className="relative overflow-hidden rounded-3xl bg-legado-marinho p-7 text-center text-legado-gelo shadow-2xl shadow-legado-marinho/30 ring-1 ring-legado-ouro/40 sm:p-9">
+        {/* O cartão do preço vem do fundo para a frente, como num holofote. */}
+        <Cena className="lg:sticky lg:top-20">
+          <div className="cena-holofote relative overflow-hidden rounded-3xl bg-legado-marinho p-7 text-center text-legado-gelo shadow-2xl shadow-legado-marinho/30 ring-1 ring-legado-ouro/40 sm:p-9">
             <div className="absolute -top-24 left-1/2 h-48 w-72 -translate-x-1/2 rounded-full bg-legado-ouro/15 blur-3xl" aria-hidden="true" />
             <p className="relative mb-1 text-sm tracking-[0.2em] text-legado-gelo/70 uppercase">Mentoria da</p>
             <p className="relative mb-6 font-serif text-2xl text-legado-ouro md:text-3xl">Mulher Inteira</p>
@@ -112,7 +116,7 @@ export function InscricaoDoSite({ conteudo, botao }: Fatia<"inscricao">) {
               {conteudo.pagamentoEmEuro.texto}
             </LinkExterno>
           </p>
-        </Surgir>
+        </Cena>
       </div>
     </SecaoDoSite>
   )

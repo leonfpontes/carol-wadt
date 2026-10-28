@@ -39,7 +39,7 @@ interface SecaoDoSiteProps {
 export function SecaoDoSite({ fundo, id, children, className }: SecaoDoSiteProps) {
   return (
     <ContextoDoFundo.Provider value={fundo}>
-      <section id={id} className={cn("relative scroll-mt-12 overflow-hidden py-20 md:py-28", FUNDOS[fundo], className)}>
+      <section id={id} className={cn("relative scroll-mt-12 overflow-clip py-20 md:py-28", FUNDOS[fundo], className)}>
         <div
           aria-hidden="true"
           className="absolute top-0 left-1/2 h-px w-32 -translate-x-1/2 bg-gradient-to-r from-transparent via-legado-areia to-transparent"

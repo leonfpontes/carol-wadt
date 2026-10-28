@@ -1,20 +1,60 @@
 /**
- * Peças da rolagem em forma de apresentação do site oficial: o capítulo
- * (camada que gruda e é coberta pela seguinte) e o sumário lateral, que mostra
- * em que parte da história a pessoa está. O movimento vive em
- * `use-apresentacao.ts` e na classe `.apresentacao` de index.css.
+ * Peças da rolagem em forma de apresentação do site oficial: o capítulo, a
+ * cena (elemento que recebe o progresso da rolagem), o palco lateral (rolagem
+ * vertical vira horizontal) e o sumário lateral. As medidas vêm de
+ * `use-apresentacao.ts`; cada efeito é uma classe `cena-*` em index.css.
  */
-import type { ReactNode } from "react"
+import type { CSSProperties, ReactNode } from "react"
 import { ancora } from "@/app/rotas"
 import { cn } from "@/lib/utils"
 
 const idDoCapitulo = (indice: number) => `capitulo-${indice + 1}`
 
-/** Uma camada da apresentação. Não muda a semântica: as seções de dentro seguem com seus títulos. */
+/** Um capítulo da história: só agrupa seções para o sumário e as âncoras; não muda a semântica. */
 export function Capitulo({ indice, children }: { indice: number; children: ReactNode }) {
   return (
-    <div id={idDoCapitulo(indice)} data-capitulo className="capitulo scroll-mt-12">
+    <div id={idDoCapitulo(indice)} data-capitulo className="scroll-mt-12">
       {children}
+    </div>
+  )
+}
+
+interface CenaProps {
+  /** Classe do efeito (`cena-*` de index.css) e demais classes. */
+  className?: string
+  /** Posição na sequência, para itens lado a lado entrarem um depois do outro. */
+  ordem?: number
+  /** Variáveis extras do efeito (direção, giro...). */
+  estilo?: Record<`--${string}`, string | number>
+  como?: "div" | "li" | "p" | "ol" | "blockquote"
+  children: ReactNode
+}
+
+/** Elemento que acompanha a rolagem: o motor escreve nele --entrada, --saida, --progresso... */
+export function Cena({ className, ordem = 0, estilo, como: Tag = "div", children }: CenaProps) {
+  return (
+    <Tag data-cena="" className={className} style={{ "--i": ordem, ...estilo } as CSSProperties}>
+      {children}
+    </Tag>
+  )
+}
+
+/**
+ * Palco lateral: prende a tela e, enquanto a pessoa rola para baixo, o trilho
+ * anda para o lado. `cabeca` fica fixa no alto do palco; os itens vão no trilho.
+ * Com "reduzir movimento", vira um bloco comum com os itens em grade.
+ */
+export function PalcoLateral({ cabeca, children, trilhoClassName }: { cabeca: ReactNode; children: ReactNode; trilhoClassName?: string }) {
+  return (
+    <div data-cena="lateral" className="palco-lateral">
+      <div className="palco-lateral-quadro">
+        {cabeca}
+        <div className="palco-lateral-janela">
+          <div data-trilho className={cn("palco-lateral-trilho", trilhoClassName)}>
+            {children}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

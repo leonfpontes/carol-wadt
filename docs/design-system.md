@@ -33,16 +33,26 @@ Padrões visuais: fotos e pinturas sempre emolduradas (filete dourado, passe-par
 
 ### Rolagem em apresentação
 
-O site oficial rola como uma apresentação: cada seção (ou par de seções, como trilha e especialistas) é um **capítulo** que gruda na tela quando o fim dele chega ao rodapé, e o capítulo seguinte sobe por cima com cantos arredondados e sombra. O capítulo coberto recua (encolhe 6%, sobe um pouco e escurece com o marinho), o que dá profundidade. Em telas largas, um sumário à direita mostra o número do capítulo e leva a qualquer um deles.
+O site oficial rola como uma apresentação: cada capítulo da história tem o seu próprio movimento, ligado à rolagem (nada anima sozinho).
 
-| Peça | Onde |
-|---|---|
-| Lista de capítulos e rótulos do sumário | `CAPITULOS` em `features/proposta-site/PaginaDoSiteProposto.tsx` |
-| `Capitulo`, `SumarioDosCapitulos` | `features/proposta-site/apresentacao.tsx` |
-| Medidas e progresso (`--topo`, `--origem`, `--cobertura`) e âncoras | `features/proposta-site/use-apresentacao.ts` |
-| O efeito em si | `.apresentacao` em `src/index.css` |
+| Capítulo | Movimento | Classe |
+|---|---|---|
+| Capa | O texto sobe e se dissipa, o nome se abre para os lados, a foto recua para o fundo | `cena-capa-*` |
+| Você se identifica? | A tela prende e as dores passam de lado, endireitando ao chegar | `PalcoLateral` |
+| Citação da Carol, resumo da Carolina | O texto acende da esquerda para a direita, conforme a leitura | `cena-leitura` |
+| Em 2 meses você vai, itens da inscrição | Vêm do fundo para a frente, inclinados e desfocados | `cena-do-fundo` |
+| Pilares | Chegam empilhados como um baralho e se abrem; no celular, um cobre o outro | `cena-baralho` |
+| Para quem é | A foto se revela num círculo; os itens entram de lado, alternando | `cena-revela`, `cena-desliza` |
+| Para quem não é | Cada item é riscado ao passar e vai para trás; a foto perde a cor | `cena-risca`, `cena-desbota` |
+| Como funciona | A linha dourada se desenha; cada marco acende quando ela chega | `cena-trilha-*` |
+| Especialistas | Distribuídas como cartas, girando até assentar | `cena-carta` |
+| Carolina | Paralaxe na foto | `cena-paralaxe` |
+| Depoimentos | O carrossel entra pela direita | `cena-entra-lado` |
+| Preço | Vem do fundo para a frente, como num holofote | `cena-holofote` |
 
-Só transform e opacidade mudam durante a rolagem. Com **"reduzir movimento"** ligado no sistema, nada gruda nem encolhe e a página rola reta. O conteúdo e a semântica (títulos, ordem de leitura) não mudam.
+Como funciona: `features/proposta-site/use-apresentacao.ts` mede os elementos `Cena` (`data-cena`) a cada quadro de rolagem e escreve variáveis de 0 a 1 (`--entrada`, `--saida`, `--progresso`, `--percurso`, `--leitura`); cada classe `cena-*` em `src/index.css` usa essas variáveis só em transform, opacidade, filtro e recorte. Os valores padrão são o estado final, então nada fica escondido se o script não rodar. Em telas largas, um sumário à direita mostra o capítulo atual (`SumarioDosCapitulos`).
+
+Com **"reduzir movimento"** ligado no sistema, nenhuma regra vale e a página fica com o layout comum. O conteúdo e a semântica não mudam. As seções usam `overflow-clip` (não `overflow-hidden`) para o palco lateral e o baralho poderem grudar na tela.
 
 ## Identidade da Black: editorial
 
