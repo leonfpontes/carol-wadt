@@ -48,7 +48,7 @@ A página Black é uma **promoção de Black Friday**: preço menor de propósit
 3. **Os demais termos da Carol ficam como ela escreveu** ("gostosos", "entrega", "se permitir receber", "Hotseat"...). Decisão do Leonardo: fazem parte do apelo sentimental. Estão listados em `RevisorDeTermos` com severidade `atencao`, só para consulta.
 4. **Voz da Carol:** frases curtas, segunda pessoa ("você"), acolhedora, sem linguagem de guerra ou bronca.
 5. **Depoimentos** só com autorização da aluna e com nome abreviado (Lorena T.). Não invente notas ou médias de avaliação.
-6. **Site e Black são produtos distintos.** Texto de campanha (prazo, "Black Outubro", preço promocional) nunca vai para o site oficial.
+6. **Site e Black são produtos distintos.** Texto de campanha (prazo, "Black Outubro", preço promocional) não vai para o corpo do site oficial. A única exceção é a faixa opcional `chamadaDaCampanha`, que só leva para a página da promoção.
 
 O teste `npm run revisar:termos` falha se um termo de severidade `bloqueia` aparecer no texto visível das propostas.
 
