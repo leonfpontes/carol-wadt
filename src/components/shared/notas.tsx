@@ -13,8 +13,8 @@ interface EstadoDasNotas {
 
 const ContextoDasNotas = createContext<EstadoDasNotas>({ visiveis: true, alternar: () => {} })
 
-export function ProvedorDeNotas({ children }: { children: ReactNode }) {
-  const [visiveis, setVisiveis] = useState(true)
+export function ProvedorDeNotas({ children, visiveisNoInicio = true }: { children: ReactNode; visiveisNoInicio?: boolean }) {
+  const [visiveis, setVisiveis] = useState(visiveisNoInicio)
   const valor = useMemo(() => ({ visiveis, alternar: () => setVisiveis((v) => !v) }), [visiveis])
   return <ContextoDasNotas.Provider value={valor}>{children}</ContextoDasNotas.Provider>
 }

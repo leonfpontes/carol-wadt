@@ -19,6 +19,15 @@ const SiteProposto = lazy(async () => {
   return { default: () => <PaginaDoSiteProposto conteudo={PROPOSTA_SITE} /> }
 })
 
+/** O site oficial no ar: a proposta aprovada pela Carol, sem as peças da demonstração. */
+const SiteOficial = lazy(async () => {
+  const [{ PaginaDoSiteProposto }, { PROPOSTA_SITE }] = await Promise.all([
+    import("@/features/proposta-site/PaginaDoSiteProposto"),
+    import("@/content/proposta/site"),
+  ])
+  return { default: () => <PaginaDoSiteProposto conteudo={PROPOSTA_SITE} publicado /> }
+})
+
 const BlackProposta = lazy(async () => {
   const [{ PaginaProposta }, { PROPOSTA_BLACK }] = await Promise.all([
     import("@/features/proposta/PaginaProposta"),
@@ -42,6 +51,12 @@ export function App() {
       <RolarParaOTopo />
       <Suspense fallback={<div className="min-h-screen bg-legado-marinho" />}>
         <Routes>
+          <Route path={ROTAS.inicio} element={<SiteOficial />} />
+          <Route
+            path={ROTAS.privacidade}
+            element={<PaginaLegal documento={PROPOSTOS.privacidade} voltarPara={ROTAS.inicio} versao="atual" publicado />}
+          />
+          <Route path={ROTAS.termos} element={<PaginaLegal documento={PROPOSTOS.termos} voltarPara={ROTAS.inicio} versao="atual" publicado />} />
           <Route path={ROTAS.vitrine} element={<Vitrine />} />
           <Route path={ROTAS.atual.site} element={<SiteAtual />} />
           <Route path={ROTAS.atual.black} element={<BlackAtual />} />
@@ -64,7 +79,7 @@ export function App() {
             element={<PaginaLegal documento={PROPOSTOS.termos} voltarPara={ROTAS.proposta.site} versao="proposta" />}
           />
           <Route path={ROTAS.padraoIsca} element={<PaginaDeIsca />} />
-          <Route path="*" element={<Navigate to={ROTAS.vitrine} replace />} />
+          <Route path="*" element={<Navigate to={ROTAS.inicio} replace />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

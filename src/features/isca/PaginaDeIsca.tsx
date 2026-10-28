@@ -24,7 +24,7 @@ export function PaginaDeIsca() {
       <Secao tom="escuro" estreita className="min-h-screen">
         <Titulo como="h1">Este material não está mais disponível</Titulo>
         <p className="mb-6 opacity-80">Talvez o link tenha mudado. Veja a página da mentoria ou chame a Carol no Instagram.</p>
-        <Link to={ROTAS.proposta.site} className="text-ouro-suave underline underline-offset-4">
+        <Link to={ROTAS.inicio} className="text-ouro-suave underline underline-offset-4">
           Conhecer a Mentoria Mulher Inteira
         </Link>
       </Secao>
@@ -70,7 +70,7 @@ export function PaginaDeIsca() {
           {MARCA.arrobaInstagram}
         </a>{" "}
         ·{" "}
-        <Link to={ROTAS.proposta.privacidade} className="underline">
+        <Link to={ROTAS.privacidade} className="underline">
           Política de Privacidade
         </Link>
       </footer>

@@ -2,6 +2,15 @@
 
 Registro curto das decisões que mudam o que o código faz. A mais recente fica em cima.
 
+## 2026-10-28 · A proposta do site vira o site oficial no ar
+
+O Leonardo aprovou a proposta do site e pediu para publicá-la como site principal na Vercel.
+
+- `/` é o site oficial: a mesma página da proposta com `publicado`, sem barra de demonstração, faixa da proposta e notas. Dados ainda sem confirmação (`aConfirmar`) somem em vez de aparecer tracejados.
+- `/termos` e `/privacidade` são os textos novos (sem psicologia), no visual do site e sem o aviso de rascunho, porque os antigos afirmavam um registro de psicóloga que a Carol não tem. Contato pelo WhatsApp até o e-mail oficial ser confirmado.
+- A demonstração (vitrine, réplicas e propostas com notas) continua em `/demonstracao`, `/atual/*` e `/proposta/*`.
+- O material gratuito só aparece no ar quando `VITE_LEADS_ENDPOINT` estiver definido: sem destino real, os e-mails ficariam só no navegador da visitante.
+
 ## 2026-10-27 · Reunião com a Carol: pilares e especialistas da Black no site
 
 A Carol aprovou a proposta do site e explicou que a estrutura anterior (três frentes de prosperidade: interna, relacional e financeira) entregava demais. Essa estrutura vai para um grupo **avançado**, "Rainha da própria vida", que ainda não tem data nem página. Por enquanto tudo é um pacote só, a Mentoria da Mulher Inteira, sem falar em avançado ou standard.

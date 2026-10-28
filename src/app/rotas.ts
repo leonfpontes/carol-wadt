@@ -5,7 +5,12 @@
  * este objeto, para que renomear uma rota seja mudar uma linha.
  */
 export const ROTAS = {
-  vitrine: "/",
+  /** Site oficial da Carol, no ar. */
+  inicio: "/",
+  termos: "/termos",
+  privacidade: "/privacidade",
+  /** Demonstração para a Carol: vitrine com as páginas atuais e as propostas. */
+  vitrine: "/demonstracao",
   atual: {
     site: "/atual/site",
     black: "/atual/black",

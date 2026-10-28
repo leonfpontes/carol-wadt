@@ -66,6 +66,16 @@ FormularioDeMaterial ─► useCapturaDeLeads ─► servicos.capturaDeLeads.reg
 
 Definidas só em `src/app/rotas.ts` (`ROTAS`). Nenhum componente escreve caminhos à mão.
 
+| Rota | Página |
+|---|---|
+| `/` | Site oficial no ar (proposta do site com `publicado`: sem notas, barra de demonstração nem marcas "a confirmar") |
+| `/termos`, `/privacidade` | Textos legais no ar |
+| `/isca/:slug` | Páginas de isca do Instagram |
+| `/demonstracao` | Vitrine da demonstração para a Carol |
+| `/atual/*`, `/proposta/*` | Réplicas e propostas com notas |
+
+O modo publicado vem de `components/shared/publicacao.tsx` (`usePublicado`).
+
 ## Réplicas x propostas
 
 São quatro páginas, duas por produto. Site oficial e Black são **produtos distintos**, cada um com a sua identidade.

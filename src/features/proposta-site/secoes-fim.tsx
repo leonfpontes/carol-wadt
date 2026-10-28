@@ -8,6 +8,7 @@ import { Link } from "react-router"
 import { ANCORAS, ancora } from "@/app/rotas"
 import { LinkExterno } from "@/components/shared/LinkExterno"
 import { NotaDeMelhoria } from "@/components/shared/notas"
+import { usePublicado } from "@/components/shared/publicacao"
 import { Surgir } from "@/components/shared/Surgir"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import type { AConfirmar } from "@/content/proposta/tipos"
@@ -20,6 +21,7 @@ type Fatia<K extends keyof ConteudoDoSiteProposto> = { conteudo: ConteudoDoSiteP
 
 /** Marca tracejada para dados que dependem da Carol, no tom do site. */
 function AConfirmarDoSite({ children, claro }: { children: string; claro?: boolean }) {
+  if (usePublicado()) return null
   return (
     <span
       className={cn(
@@ -165,6 +167,9 @@ export function MaterialDoSite({ conteudo }: Fatia<"material">) {
 }
 
 export function RodapeDoSite({ conteudo }: Fatia<"rodape">) {
+  const publicado = usePublicado()
+  // No ar, os dados ainda sem confirmação somem em vez de aparecer tracejados.
+  const visivel = (link: (typeof conteudo.colunas)[number]["links"][number]) => !(publicado && "aConfirmar" in link)
   return (
     <footer className="border-t border-legado-ouro/15 bg-legado-marinho pt-16 pb-28 text-legado-gelo md:pb-10">
       <div className="contem-legado">
@@ -178,7 +183,7 @@ export function RodapeDoSite({ conteudo }: Fatia<"rodape">) {
             <nav key={coluna.titulo} aria-label={coluna.titulo}>
               <p className="mb-4 text-sm font-semibold tracking-wide text-legado-ouro">{coluna.titulo}</p>
               <ul className="grid list-none gap-2.5 p-0 text-sm">
-                {coluna.links.map((link, i) => (
+                {coluna.links.filter(visivel).map((link, i) => (
                   <li key={i} className="text-legado-gelo/60">
                     {"aConfirmar" in link ? (
                       <AConfirmarDoSite>{link.aConfirmar}</AConfirmarDoSite>

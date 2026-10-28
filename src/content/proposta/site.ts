@@ -44,7 +44,7 @@ const whatsappDuvidas = WHATSAPP.linkComMensagem("Olá. Quero informações da M
 
 export const PROPOSTA_SITE: ConteudoDoSiteProposto = {
   meta: {
-    titulo: "Mentoria Mulher Inteira · Carolina Wadt",
+    titulo: "Mentoria da Mulher Inteira · Carolina Wadt",
     descricao:
       "Mentoria em grupo de Inteligência Sistêmica com Carolina Wadt: seis encontros ao vivo para encontrar o seu lugar de potência dentro da sua própria vida.",
   },
@@ -397,8 +397,8 @@ export const PROPOSTA_SITE: ConteudoDoSiteProposto = {
       {
         titulo: "Informações",
         links: [
-          { texto: "Termos de Uso", destino: ROTAS.proposta.termos },
-          { texto: "Política de Privacidade", destino: ROTAS.proposta.privacidade },
+          { texto: "Termos de Uso", destino: ROTAS.termos },
+          { texto: "Política de Privacidade", destino: ROTAS.privacidade },
           { texto: "Garantia de 7 dias", destino: ancora(ANCORAS.oferta) },
           { aConfirmar: "CNPJ / NIF a confirmar" },
           { aConfirmar: "Livro de Reclamações (link a confirmar)" },

@@ -1,7 +1,9 @@
 import { Fragment, type ReactNode } from "react"
-import { ANCORAS } from "@/app/rotas"
+import { ANCORAS, ancora } from "@/app/rotas"
+import { servicos } from "@/app/servicos"
 import { BarraDeDemonstracao } from "@/components/shared/BarraDeDemonstracao"
 import { AlternadorDeNotas, ProvedorDeNotas } from "@/components/shared/notas"
+import { ProvedorDePublicacao } from "@/components/shared/publicacao"
 import type { ConteudoDoSiteProposto } from "@/content/proposta/tipos-site"
 import { BarraFixaDoSite, DuvidasDoSite, InscricaoDoSite, MaterialDoSite, RodapeDoSite } from "@/features/proposta-site/secoes-fim"
 import { DepoimentosDoSite, EspecialistasDoSite, MentoraDoSite, NaoEhParaDoSite, ParaQuemDoSite, TrilhaDoSite } from "@/features/proposta-site/secoes-meio"
@@ -21,6 +23,9 @@ import { useTitulo } from "@/hooks/use-titulo"
  */
 type Renderizador = (c: ConteudoDoSiteProposto) => ReactNode
 
+/** Material gratuito: guardado à parte porque sai do ar enquanto os leads não têm destino real. */
+const MATERIAL: Renderizador = (c) => <MaterialDoSite conteudo={c.material} botao={c.botaoPrincipal} />
+
 const SECOES: Renderizador[] = [
   (c) => <CapaDoSite conteudo={c.capa} botao={c.botaoPrincipal} />,
   (c) => <DoresDoSite conteudo={c.dores} botao={c.botaoPrincipal} />,
@@ -34,26 +39,50 @@ const SECOES: Renderizador[] = [
   (c) => <DepoimentosDoSite conteudo={c.depoimentos} botao={c.botaoPrincipal} />,
   (c) => <InscricaoDoSite conteudo={c.inscricao} botao={c.botaoPrincipal} />,
   (c) => <DuvidasDoSite conteudo={c.duvidas} botao={c.botaoPrincipal} />,
-  (c) => <MaterialDoSite conteudo={c.material} botao={c.botaoPrincipal} />,
+  MATERIAL,
   (c) => <RodapeDoSite conteudo={c.rodape} botao={c.botaoPrincipal} />,
 ]
 
-export function PaginaDoSiteProposto({ conteudo }: { conteudo: ConteudoDoSiteProposto }) {
+interface PaginaDoSitePropostoProps {
+  conteudo: ConteudoDoSiteProposto
+  /** No ar (carolinawadt.com): sem barra de demonstração, faixa da proposta e notas. */
+  publicado?: boolean
+}
+
+export function PaginaDoSiteProposto({ conteudo, publicado = false }: PaginaDoSitePropostoProps) {
   useTitulo(conteudo.meta.titulo, conteudo.meta.descricao)
   const barraVisivel = useBarraFixa("para-voce", ANCORAS.oferta)
+  // Sem destino real para os leads, o formulário de material só existe na demonstração.
+  const comMaterial = !publicado || !servicos.emDemonstracao
+  const pagina = comMaterial ? conteudo : semMaterialNoRodape(conteudo)
 
   return (
-    <ProvedorDeNotas>
-      <BarraDeDemonstracao pagina="site" acoes={<AlternadorDeNotas className="px-3 py-1 shadow-none" />} />
-      <div className="bg-legado-ouro px-4 py-2.5 text-center font-inter text-[13px] font-semibold text-legado-marinho">
-        {conteudo.faixaDaProposta.titulo} <span className="font-normal">{conteudo.faixaDaProposta.apoio}</span>
-      </div>
-      <main className="font-inter text-base leading-normal">
-        {SECOES.map((renderizar, i) => (
-          <Fragment key={i}>{renderizar(conteudo)}</Fragment>
-        ))}
-      </main>
-      <BarraFixaDoSite conteudo={conteudo.barraFixa} visivel={barraVisivel} />
-    </ProvedorDeNotas>
+    <ProvedorDePublicacao publicado={publicado}>
+      <ProvedorDeNotas visiveisNoInicio={!publicado}>
+        {!publicado && (
+          <>
+            <BarraDeDemonstracao pagina="site" acoes={<AlternadorDeNotas className="px-3 py-1 shadow-none" />} />
+            <div className="bg-legado-ouro px-4 py-2.5 text-center font-inter text-[13px] font-semibold text-legado-marinho">
+              {conteudo.faixaDaProposta.titulo} <span className="font-normal">{conteudo.faixaDaProposta.apoio}</span>
+            </div>
+          </>
+        )}
+        <main className="font-inter text-base leading-normal">
+          {SECOES.filter((secao) => comMaterial || secao !== MATERIAL).map((renderizar, i) => (
+            <Fragment key={i}>{renderizar(pagina)}</Fragment>
+          ))}
+        </main>
+        <BarraFixaDoSite conteudo={conteudo.barraFixa} visivel={barraVisivel} />
+      </ProvedorDeNotas>
+    </ProvedorDePublicacao>
   )
+}
+
+function semMaterialNoRodape(conteudo: ConteudoDoSiteProposto): ConteudoDoSiteProposto {
+  const destinoDoMaterial = ancora(ANCORAS.material)
+  const colunas = conteudo.rodape.colunas.map((coluna) => ({
+    ...coluna,
+    links: coluna.links.filter((link) => !("destino" in link) || link.destino !== destinoDoMaterial),
+  }))
+  return { ...conteudo, rodape: { ...conteudo.rodape, colunas } }
 }
