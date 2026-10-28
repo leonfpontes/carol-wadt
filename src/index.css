@@ -206,3 +206,37 @@
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
+
+/*
+ * Rolagem em forma de apresentação (site oficial).
+ * Cada capítulo gruda quando o fim dele chega ao rodapé da tela e o seguinte
+ * sobe por cima, com cantos arredondados e sombra; o de baixo recua (encolhe,
+ * sobe um pouco e escurece) conforme é coberto. As variáveis --topo, --origem
+ * e --cobertura vêm de features/proposta-site/use-apresentacao.ts.
+ * Com "reduzir movimento" ligado, nada disso se aplica e a página rola reta.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .apresentacao > .capitulo {
+    position: sticky;
+    top: var(--topo, 0px);
+    overflow: clip;
+    transform-origin: 50% var(--origem, 50%);
+    transform: translate3d(0, calc(var(--cobertura, 0) * -2.5vh), 0) scale(calc(1 - var(--cobertura, 0) * 0.06));
+  }
+  .apresentacao > .capitulo + .capitulo {
+    border-radius: 1.25rem 1.25rem 0 0;
+    box-shadow: 0 -20px 44px -16px color-mix(in srgb, var(--color-legado-marinho) 60%, transparent);
+    @media (width >= 48rem) {
+      border-radius: 2.25rem 2.25rem 0 0;
+    }
+  }
+  .apresentacao > .capitulo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 40;
+    pointer-events: none;
+    background: var(--color-legado-marinho);
+    opacity: calc(var(--cobertura, 0) * 0.6);
+  }
+}
